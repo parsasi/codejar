@@ -1,5 +1,6 @@
 import React from 'react'
-import FaSave from './FaSave'
+import Fa from './Fa'
+
 export default (props) => {
     return (
         <div className="menu">
@@ -8,7 +9,6 @@ export default (props) => {
             <a href="#" className="html">index<b>.html</b></a>
             <a href="#" className="js">javascript<b>.js</b></a>
             <a href="#" className="add"></a>
-            <FaSave />
     </div>
     )
 }
