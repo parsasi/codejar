@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+.ComingSoonContainer{
+    width:100vw;
+    height:100vh;
+    z-index: 1;
+    overflow:hidden;
+    text-align: center;
+    background-image: url(../assets/coming-soon-background.jpg);
+    background-size: 100% auto;
+}
+.ComingSoonLogo{
+    margin:20vh auto;
+    text-align: center;
+}
+.ComingSoonLogoImg{
+    margin:0 auto;
+    width:25vw;
+    height:auto;
+}
+.ComingSoonText{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    /* margin-top:-0px; */
+    font-size:1.5rem;
+}
