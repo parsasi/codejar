@@ -1,0 +1,22 @@
+{
+  "name": "code-jar",
+  "version": "1.0.0",
+  "description": "A live code sharing platform.",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "code",
+    "sharing",
+    "live",
+    "code",
+    "vscode",
+    "monaco",
+    "code",
+    "editor"
+  ],
+  "author": "Parsa Safavi",
+  "license": "MIT"
+}
