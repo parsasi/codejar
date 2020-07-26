@@ -1,4 +1,6 @@
 .MiddleRow{
     width:100%;
     display:flex;
+    height: calc(100% - 32px);
+    height: -webkit-calc( 100% - 32px );
 }

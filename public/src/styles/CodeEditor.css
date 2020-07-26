@@ -1,8 +1,7 @@
 .code {
-	height: calc( 100% - 70px );
-	height: -webkit-calc( 100% - 70px );
+	height: calc( 100% - 32px );
+    height: -webkit-calc( 100% - 32px );
 	width: 80%;
-	/* width: -webkit-calc( 100% - 340px ); */
 	background: #fafafa;
 	color: #A0A0A0;	
 	text-shadow: 2px 2px 0 rgba(0,0,0,.01);

@@ -4,7 +4,7 @@ import '../styles/CodeEditor.css'
 export default (props) => {
     return (
         <div className="code">
-            <Monaco width={100 + '%'} height={100+'vh'} lang="javascript" />
+            <Monaco width={100 + '%'} height={100 +'%'} lang="javascript" />
         </div>
     )
 }
