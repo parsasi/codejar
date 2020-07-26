@@ -1,14 +1,19 @@
 import React from 'react'
-import FaSave from './FaSave'
+import Fa from './Fa'
+import MenuItemLogic from './MenuItemLogic'
+import AddFileButton from './AddFileButton'
+import '../styles/Menu.css'
+import Logo from '../assets/logo_transparent_sq.png'
 export default (props) => {
     return (
         <div className="menu">
-            <span>Work area</span>
-            <a href="#save" className="current save css">style<b>.css</b></a>
-            <a href="#" className="html">index<b>.html</b></a>
-            <a href="#" className="js">javascript<b>.js</b></a>
-            <a href="#" className="add"></a>
-            <FaSave />
-    </div>
+            <div className="MenuLogo">
+                <img src={Logo} alt="Logo"/>
+            </div>
+            <MenuItemLogic current={true} save={true} file={{extention : 'css' , name:'styles'}}/>
+            <MenuItemLogic current={false} save={false} file={{extention : 'html' , name:'index'}}/>
+            <MenuItemLogic current={false} save={true} file={{extention : 'js' , name:'main'}}/>
+            <AddFileButton></AddFileButton>
+        </div>
     )
 }

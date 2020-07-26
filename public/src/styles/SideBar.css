@@ -1,0 +1,5 @@
+.SideBar{
+    width:15%;
+    height: calc( 100% - 32px );
+    height: -webkit-calc( 100% - 32px );
+}

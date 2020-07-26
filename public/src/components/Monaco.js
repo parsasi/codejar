@@ -5,7 +5,7 @@ export default (props) => {
         <MonacoEditor
         width={props.width}
         height={props.height}
-        language="javascript"
+        language={props.lang}
         theme="vs-dark"
      />
     )

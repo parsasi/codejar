@@ -1,4 +1,7 @@
 import React from 'react'
+import Fa from './Fa'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
+
 export default (props) => {
     return (
         <div className="windowbar">
@@ -6,7 +9,7 @@ export default (props) => {
             <div className="controls">
                 <span className="min"><ion-icon name="arrow-down"></ion-icon></span>
                 <span className="max"><ion-icon name="arrow-up"></ion-icon></span>
-                <a className="close" href="#save"><ion-icon name="close"></ion-icon></a>
+                <a className="close" href="#save"><Fa icon={faSave}/></a>
             </div>
         </div>
     )
