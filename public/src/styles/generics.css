@@ -1,7 +1,7 @@
 
 body {
 	margin: 0;
-	pading: 0;
+	padding: 0;
 	background: #32353D;
 	font-family: 'Varela Round', 'Ionicons', sans-serif;
 	user-select: none;
@@ -16,9 +16,6 @@ a {
 }
 
 .windowbar {
-	position: fixed;
-	top: 0px;
-	left: 0px;
 	height: 30px;
 	width: 100%;
 	background: #32353D;
@@ -27,7 +24,7 @@ a {
 	z-index: 100;
 }
 .windowbar span {
-	padding: 2px 10px;
+	padding: 2px 10px;	
 	margin: 0;
 	font-size: 13px;
 	border-radius: 3px;
@@ -41,16 +38,10 @@ a {
 	background: rgba(0,0,0,.2);
 }
 .windowbar .controls {
-	position: absolute;
-	right: 0px;
-	top: 0px;
 	height: 30px;
 	width: 90px;
 }
 .windowbar .controls span, .windowbar .controls a {
-	position: absolute;
-	right: 0px;
-	top: 0px;
 	height: 30px;
 	width: 30px;
 	text-align: center;
@@ -84,28 +75,6 @@ a {
 	font-size: 26px;
 }
 
-
-
-.code {
-	position: absolute;
-	height: calc( 100% - 70px );
-	height: -webkit-calc( 100% - 70px );
-	width: calc( 100% - 340px );
-	width: -webkit-calc( 100% - 340px );
-	top: 30px;
-	left: 300px;
-	/* padding: 20px 0px 20px 40px; */
-	background: #fafafa;
-	color: #A0A0A0;
-	text-shadow: 2px 2px 0 rgba(0,0,0,.01);
-	box-shadow: inset 37px 0 0 rgba(0,0,0,.06);
-	user-select: text;
-	-webkit-user-select: text;
-	outline: none;
-	overflow: hidden;
-	transition: all .2s ease;
-	-webkit-transition: all .2s ease;
-}
 /* ::-webkit-scrollbar {
 	min-width: 20px;
 	width: 20px;

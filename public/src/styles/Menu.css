@@ -1,8 +1,5 @@
 .menu {
-	position: fixed;
-	top: 30px;
-	left: 0px;
-	width: 300px;
+	width: 100%;
 	height: calc( 100% - 32px );
 	height: -webkit-calc( 100% - 32px );
 	padding-top: 2px;
