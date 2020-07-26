@@ -1,0 +1,11 @@
+.StatusBarContainer{
+    min-width: 100px;
+    min-height:15px;
+    background-color:darkgray;
+    position: absolute;
+    bottom:0;
+    left:0;
+    border-top-right-radius: 5px;
+    font-size:0.8rem;
+    padding:3px 10px;
+}
