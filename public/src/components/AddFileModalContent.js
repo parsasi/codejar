@@ -1,11 +1,20 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Fa from './Fa'
-import { faCopy  } from '@fortawesome/free-solid-svg-icons'
-import '../styles/ShareModalContent.css'
+import { faPlus  } from '@fortawesome/free-solid-svg-icons'
+import '../styles/AddFileModalContent.css'
 export default (props) => {
+    let [fileName , setFileName] = useState('');
     return(
         <div className="AddFileModalContainer">
-            <h1>hello world</h1>
+            <div className="AddFileModalInputs">
+                <input value={fileName} onChange={e => setFileName(e.target.value)} type="text" className="AddFileModalInput" id="AddFileModalInput" /> 
+                <button className="AddFileModalButton" onClick={e => props.addToFiles(document.querySelector('#AddFileModalInput').value)}><Fa icon={faPlus} /></button>
+            </div>
+            {props.validationError && (
+            <div className="AddFileModalErrors">
+                <p>Please enter a valid file name.</p>
+            </div>
+            )}
         </div>
     )
 }
