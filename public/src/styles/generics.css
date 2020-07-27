@@ -7,6 +7,10 @@ body {
 	user-select: none;
 	-webkit-user-select: none;
 }
+ul{
+	padding:0;
+	margin:0;
+}
 .EditorContainer{
 	height:100vh;
 	overflow:hidden;
@@ -19,65 +23,7 @@ a {
 	color: inherit;
 }
 
-.windowbar {
-	height: 30px;
-	width: 100%;
-	background: #32353D;
-	color: rgba(255,255,255,.6);
-	line-height: 28px;
-	z-index: 100;
-}
-.windowbar span {
-	padding: 2px 10px;	
-	margin: 0;
-	font-size: 13px;
-	border-radius: 3px;
-	cursor: pointer;
-	transition: all .1s ease-in-out;
-}
-.windowbar span:hover {
-	color: rgba(255,255,255,.8);
-}
-.windowbar span:active {
-	background: rgba(0,0,0,.2);
-}
-.windowbar .controls {
-	height: 30px;
-	width: 90px;
-}
-.windowbar .controls span, .windowbar .controls a {
-	height: 30px;
-	width: 30px;
-	text-align: center;
-	line-height: 30px;
-	padding: 0;
-	margin: 0;
-	border-radius: 0;
-}
-.windowbar .controls span i, .windowbar .controls a i {
-	color: #fff;
-}
-.windowbar .controls span:hover {
-	background: rgba(0,0,0,.2);
-}
-.windowbar .controls .min {right: 60px;}
-.windowbar .controls .max {right: 30px;}
-.windowbar .controls .close {right: 0px;background:#E87460;}
-.windowbar .controls .close:active {opacity: .9;}
 
-.windowbar .controls .min:before, .windowbar .controls .max:before {
-	font-size: 18px;
-}
-.windowbar .controls .min:before {
-	content: "\f3d0";
-}
-.windowbar .controls .max:before {
-	content: "\f3d8";
-}
-.windowbar .controls .close:before {
-	content: "\f406";
-	font-size: 26px;
-}
 n{ 
   	counter-increment: step-counter;
   	position : relative;
