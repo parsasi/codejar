@@ -16,7 +16,8 @@
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "react-monaco-editor": "^0.39.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-toggle": "^4.1.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
