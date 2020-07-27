@@ -1,9 +1,8 @@
 import React from 'react'
 import '../styles/StatusBar.css'
 export default (props) => {
-    return (
+    return props.visible ? (
         <div className="StatusBarContainer">
-        
-        </div>
-    )
+            <span className="StatusBarTex">{props.text}</span>
+        </div>) : (<span></span>)
 }
