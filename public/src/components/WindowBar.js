@@ -5,7 +5,7 @@ import WindowBarControls from './WindowBarControls'
 export default (props) => {
     return (
         <div className="windowbar">
-           <WindowBarList />
+                <WindowBarList />
             <WindowBarControls />
         </div>
     )

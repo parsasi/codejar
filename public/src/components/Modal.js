@@ -15,10 +15,9 @@ export default (props) => {
           padding: 0
         }
       };
-      let [isOpen , setIsOpen] = useState(props.open)
     return (
         <Modal
-          isOpen={isOpen}
+          isOpen={props.open}
           onAfterOpen={props.onAfterOpen && props.onAfterOpen}
           style={customStyles}
           contentLabel={props.title ? props.title : ''}
@@ -29,7 +28,7 @@ export default (props) => {
                 <h2 className="ModalInnerHeaderTitleText">{props.title && props.title}</h2>
               </div>
               <div className="ModalInnerHeaderCloseContainer">
-                <button className="ModalInnerHeaderCloseButton" onClick={() => setIsOpen(false)}>
+                <button className="ModalInnerHeaderCloseButton" onClick={() => props.setIsOpen(false)}>
                   <Fa icon={faTimes} size="md"/>
                 </button>
               </div>

@@ -2,14 +2,26 @@ import React from 'react'
 import WindowBar from './WindowBar'
 import MiddleRow from './MiddleRow'
 import '../styles/generics.css'
-import StatusBar from './StatusBar'
-import Modal from './Modal'
+import StatusBarLogic from './StatusbarLogic'
+import StatusContextProvider from './StatusContextProvider'
+import ShareModalContentLogic from './ShareModalContentLogic'
+import ShareModalContextProvider from './ShareModalContextProvider'
+import AddFileModalContextProvider from './AddFileModalContextProvider'
+import AddFileModalContentLogic from './AddFileModalContentLogic'
 export default (props) => {
     return (
         <div className="EditorContainer">
-            <WindowBar/>
-            <MiddleRow />
-            <StatusBar />
+            <StatusContextProvider>
+                <ShareModalContextProvider>
+                    <AddFileModalContextProvider>
+                        <WindowBar/>
+                        <MiddleRow />
+                        <StatusBarLogic />
+                        <AddFileModalContentLogic/>
+                    </AddFileModalContextProvider>
+                    <ShareModalContentLogic/>
+                </ShareModalContextProvider>
+            </StatusContextProvider>
         </div>
     )
 }

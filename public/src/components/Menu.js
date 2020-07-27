@@ -1,7 +1,7 @@
 import React from 'react'
 import Fa from './Fa'
 import MenuItemLogic from './MenuItemLogic'
-import AddFileButton from './AddFileButton'
+import AddFileButtonLogic from './AddFileButtonLogic'
 import '../styles/Menu.css'
 import Logo from '../assets/logo_transparent_sq.png'
 export default (props) => {
@@ -13,7 +13,7 @@ export default (props) => {
             <MenuItemLogic current={true} save={true} file={{extention : 'css' , name:'styles'}}/>
             <MenuItemLogic current={false} save={false} file={{extention : 'html' , name:'index'}}/>
             <MenuItemLogic current={false} save={true} file={{extention : 'js' , name:'main'}}/>
-            <AddFileButton></AddFileButton>
+            <AddFileButtonLogic />
         </div>
     )
 }
