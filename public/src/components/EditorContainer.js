@@ -6,14 +6,19 @@ import StatusBarLogic from './StatusbarLogic'
 import StatusContextProvider from './StatusContextProvider'
 import ShareModalContentLogic from './ShareModalContentLogic'
 import ShareModalContextProvider from './ShareModalContextProvider'
+import AddFileModalContextProvider from './AddFileModalContextProvider'
+import AddFileModalContentLogic from './AddFileModalContentLogic'
 export default (props) => {
     return (
         <div className="EditorContainer">
             <StatusContextProvider>
                 <ShareModalContextProvider>
-                    <WindowBar/>
-                    <MiddleRow />
-                    <StatusBarLogic />
+                    <AddFileModalContextProvider>
+                        <WindowBar/>
+                        <MiddleRow />
+                        <StatusBarLogic />
+                        <AddFileModalContentLogic/>
+                    </AddFileModalContextProvider>
                     <ShareModalContentLogic/>
                 </ShareModalContextProvider>
             </StatusContextProvider>

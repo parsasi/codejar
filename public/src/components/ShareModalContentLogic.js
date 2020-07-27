@@ -14,7 +14,7 @@ export default (props) => {
         .catch(e => setStatus({visible : true , text : 'Error copying the data'}))
     }
     return(
-        <Modal open={isOpen} setIsOpen={setIsOpen}>
+        <Modal open={isOpen} setIsOpen={setIsOpen} title="Share this workspace">
             <ShareModalContent publicLink="https://codejar.live/ws/public" adminLink="https://codejar.live/ws/public" CopyCodeHandler={CopyCodeHandler} />
         </Modal>
     )
