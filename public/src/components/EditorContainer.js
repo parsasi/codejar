@@ -10,7 +10,6 @@ export default (props) => {
             <WindowBar/>
             <MiddleRow />
             <StatusBar />
-            <Modal open={true} title="Welcome Message"><h1>Hello World</h1></Modal>
         </div>
     )
 }

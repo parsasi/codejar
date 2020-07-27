@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Modal from 'react-modal'
 import '../styles/Modal.css'
 import Fa from './Fa'
@@ -15,9 +15,10 @@ export default (props) => {
           padding: 0
         }
       };
+      let [isOpen , setIsOpen] = useState(props.open)
     return (
         <Modal
-          isOpen={props.open}
+          isOpen={isOpen}
           onAfterOpen={props.onAfterOpen && props.onAfterOpen}
           style={customStyles}
           contentLabel={props.title ? props.title : ''}
@@ -28,7 +29,7 @@ export default (props) => {
                 <h2 className="ModalInnerHeaderTitleText">{props.title && props.title}</h2>
               </div>
               <div className="ModalInnerHeaderCloseContainer">
-                <button className="ModalInnerHeaderCloseButton">
+                <button className="ModalInnerHeaderCloseButton" onClick={() => setIsOpen(false)}>
                   <Fa icon={faTimes} size="md"/>
                 </button>
               </div>
@@ -40,3 +41,4 @@ export default (props) => {
         </Modal>
     )
 }
+// <Modal open={true} title="Welcome Message"><h1>Hello World</h1></Modal>
