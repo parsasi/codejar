@@ -4,13 +4,18 @@ import MiddleRow from './MiddleRow'
 import '../styles/generics.css'
 import StatusBarLogic from './StatusbarLogic'
 import StatusContextProvider from './StatusContextProvider'
+import ShareModalContentLogic from './ShareModalContentLogic'
+import ShareModalContextProvider from './ShareModalContextProvider'
 export default (props) => {
     return (
         <div className="EditorContainer">
             <StatusContextProvider>
-                <WindowBar/>
-                <MiddleRow />
-                <StatusBarLogic />
+                <ShareModalContextProvider>
+                    <WindowBar/>
+                    <MiddleRow />
+                    <StatusBarLogic />
+                    <ShareModalContentLogic/>
+                </ShareModalContextProvider>
             </StatusContextProvider>
         </div>
     )

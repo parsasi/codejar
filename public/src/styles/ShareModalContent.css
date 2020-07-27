@@ -1,0 +1,28 @@
+.ShareModalContantSub{
+    display: flex;
+    justify-content: space-between;
+    padding:20px 0;
+}
+.ShareModalContentText{
+    padding:10px 0;
+}
+.ShareModalContentSubLink{
+    flex-grow: 2;
+    text-align:left;
+    margin:0 20px;
+    padding:10px 10px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    position: relative;
+}
+.ShareModalContentSubCopy{
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    padding:0 10px;
+    background-color: transparent;
+    color:#ffffff;
+    border:none;
+    cursor:pointer;
+}

@@ -8,4 +8,5 @@
     border-top-right-radius: 5px;
     font-size:0.8rem;
     padding:3px 10px;
+    z-index: 10000;
 }
