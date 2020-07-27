@@ -1,0 +1,11 @@
+.RightSideBarDownload{
+    color:#ffffff;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height:100%;
+}
+.RightSideBarDownloadText{
+    text-align: center;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuItem from './MenuItem'
-import { faCss3 , faHtml5 , faJs } from '@fortawesome/free-brands-svg-icons'
+import { faCss3 , faHtml5 , faJs , faJava , faPython , faMarkdown } from '@fortawesome/free-brands-svg-icons'
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -11,19 +11,18 @@ export default (props) => {
     const icon = figureOutTheIcon(extention)
     return (<MenuItem file={props.file} current={current} save={save} extention={extention} icon={icon}/>)
 }
+
 function figureOutTheIcon(extention){
-    switch(extention){
-        case 'css':
-            return faCss3;
-            break;
-        case 'html':
-            return faHtml5;
-            break;
-        case 'js':
-            return faJs;
-            break;
-        default:
-            return faDotCircle;
-            break;
+    const extentionToIconMap = {
+        css : faCss3,
+        html : faHtml5,
+        js : faJs,
+        py : faPython,
+        java : faJava,
+        md : faMarkdown,
+        other : faDotCircle,
     }
+    return extentionToIconMap[extention] ? extentionToIconMap[extention] : extentionToIconMap['other']
 }
+
+

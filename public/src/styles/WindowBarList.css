@@ -1,0 +1,22 @@
+.WindowBarList{
+    display: flex;
+    justify-content: flex-start;
+    margin:0;
+    padding:0;
+}
+.WindowBarListItem{
+    margin:0 5px;
+    list-style: none;
+}
+.WindowBarListItemButton{
+    background-color:#2E3138;
+    border:none;
+    color:#ffffff;
+    cursor:pointer;
+    padding:2px 10px;
+    border-radius: 5px;
+    transition:0.2s linear;
+}
+.WindowBarListItemButton:hover{
+    background-color:#1E1E1E;
+}
