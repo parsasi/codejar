@@ -1,6 +1,6 @@
 import React from 'react'
 import Fa from './Fa'
-export default (props) => {
+export default function MenuItem(props){
     
     return (
         <a href="#save" className={`${props.current} ${props.save} ${props.extention}`}>

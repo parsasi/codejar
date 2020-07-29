@@ -1,6 +1,6 @@
 import React from 'react'
 import MonacoEditor from 'react-monaco-editor'
-export default (props) => {
+export default function Monaco(props){
     return (
         <MonacoEditor
         width={props.width}

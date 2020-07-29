@@ -4,7 +4,7 @@ import { faCss3 , faHtml5 , faJs , faJava , faPython , faMarkdown } from '@forta
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-export default (props) => {
+export default function MenuItemLogic(props){
     const current = props.current ? "current" : ""
     const save = props.save ? "save": "css"
     const extention = props.file.extention

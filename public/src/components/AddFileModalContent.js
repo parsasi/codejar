@@ -2,7 +2,7 @@ import React , {useState} from 'react'
 import Fa from './Fa'
 import { faPlus  } from '@fortawesome/free-solid-svg-icons'
 import '../styles/AddFileModalContent.css'
-export default (props) => {
+export default function AddFileModalContent(props){
     let [fileName , setFileName] = useState('');
     return(
         <div className="AddFileModalContainer">

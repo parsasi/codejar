@@ -1,26 +1,31 @@
-import {useReducer} from 'react'
+import React , {useReducer} from 'react'
 const fileInstance = {
     name : '',
     extention : '',
     lang : '',
-    timeCreated,
+    timeCreated : '',
     content : '',
-    lastUpdated,
+    lastUpdated : '',
+    current:false
 }
 
 const initialState = {
-    currentFile, 
+    currentFile : {}, 
     allFiles : []
 } 
 
-const fileReducer = (state , action) => {
+function fileReducer(state , action){
     switch(action.type){
-        case 'add':
-            let newFile = {...fileInstance , ...action.data}
-        break;
+        case 'ADD_FILE':
+            const newState = {
+                ...state,
+                allFiles : [...state.allFiles , {...fileInstance , ...action.payload }],
+                currentFile: action.payload 
+            }
+            return newState
+        default:
+            return state;
     }
 } 
 
-export default getFileReducer = () => {
-    return useReducer(fileReducer , initialState)
-}
+export {fileReducer , initialState}

@@ -8,7 +8,7 @@ import ShareModalContentLogic from './ShareModalContentLogic'
 import ShareModalContextProvider from './ShareModalContextProvider'
 import AddFileModalContextProvider from './AddFileModalContextProvider'
 import AddFileModalContentLogic from './AddFileModalContentLogic'
-export default (props) => {
+export default function EditorContainer(props){
     return (
         <div className="EditorContainer">
             <StatusContextProvider>
