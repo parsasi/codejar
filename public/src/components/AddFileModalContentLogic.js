@@ -1,18 +1,33 @@
 import React, { useContext , useState  } from 'react'
+import {useDispatch} from 'react-redux'
 import AddFileModalContent from './AddFileModalContent'
 import AddFileModalContext from '../contexts/AddFileModalContext'
 import Modal from './Modal'
 import {validateFileName } from '../helpers/validator'
-import FilesReducerContext from '../contexts/FileReducerContext'
+import {addFile} from '../reducers/FileReducer'
+import sanitize from '../helpers/sanitize'
+import getExtention from '../helpers/getExtention'
 export default function AddFileModalContentLogic(props){
     const [isOpen , setIsOpen] = useContext(AddFileModalContext)
     const [validationError , setValidationError] = useState(false)
-    const [ , allFilesDispatch] = useContext(FilesReducerContext)
-    function addToFiles(text){
+    const dispatch = useDispatch()
+    function addToFiles(text, extention, lang){
+        text = sanitize(text)
         if(validateFileName(text)){
+            getExtention(text)
             setValidationError(false)
             const now = new Date()
-            allFilesDispatch({type : 'ADD_FILE' , payload : {file : {name : text , extention : '.js' , lang : 'javascript' , content : '' , timeCreated : now , lastUpdated : now , current:true}}})
+            const newFile = {
+                name : text,
+                extention : extention || '.js',
+                lang: lang || 'javascript',
+                content : '',
+                timeCreated : now,
+                lastUpdated : now,
+                current : true
+            }
+            console.log(addFile)
+            dispatch(addFile(newFile))
         }else{
             setValidationError(true)
         }

@@ -1,33 +1,27 @@
-const fileInstance = {
-    name : '',
-    extention : '',
-    lang : '',
-    timeCreated : '',
-    content : '',
-    lastUpdated : '',
-    current:false
-}
-export const initialState = {
-    allFiles : [],
-    currentFile : {
-        name : '',
-        extention : '',
-        lang : '',
-        timeCreated : '',
-        content : '',
-        lastUpdated : '',
-        current:false
-    }
-}
+import { createSlice } from '@reduxjs/toolkit'
 
-export const fileReducer = (state , action) => {
-    switch(action.type){
-        case 'ADD_FILE':
-            return {
-                allFiles: [...state.allFiles , action.payload.file],
-                currentFile : action.payload.file
-            }
-        default:
-            return state
+export const filesSlice = createSlice({
+  name: 'files',
+  initialState: {
+        allFiles : [],
+        currentFile : {
+            id: '',
+            name : '',
+            extention : '',
+            lang : '',
+            timeCreated : '',
+            content : '',
+            lastUpdated : '',
+            current:false
+        }
+    },
+    reducers:{
+        addFile: (state, action) => {
+            state.allFiles.push(action.payload)
+        },
     }
-}
+})
+
+export const { addFile } = filesSlice.actions
+
+export default filesSlice.reducer

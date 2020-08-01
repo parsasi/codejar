@@ -10,7 +10,7 @@ export default function Menu(props){
             <div className="MenuLogo">
                 <img src={Logo} alt="Logo"/>
             </div>
-            {props.allFiles.allFiles.map(item => (<MenuItemLogic current={item.current} save={false} file={{extention : item.extention , name:item.name}}/>))}
+            {props.allFiles.map(item => (<MenuItemLogic current={item.current} save={false} file={{extention : item.extention , name:item.name}}/>))}
             <MenuItemLogic current={true} save={true} file={{extention : 'css' , name:'styles'}}/>
             <MenuItemLogic current={false} save={false} file={{extention : 'html' , name:'index'}}/>
             <MenuItemLogic current={false} save={true} file={{extention : 'js' , name:'main'}}/>
