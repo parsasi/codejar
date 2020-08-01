@@ -8,19 +8,22 @@ import ShareModalContentLogic from './ShareModalContentLogic'
 import ShareModalContextProvider from './ShareModalContextProvider'
 import AddFileModalContextProvider from './AddFileModalContextProvider'
 import AddFileModalContentLogic from './AddFileModalContentLogic'
+import FileReducerContextProvider from './FileReducerContextProvider'
 export default function EditorContainer(props){
     return (
         <div className="EditorContainer">
             <StatusContextProvider>
-                <ShareModalContextProvider>
-                    <AddFileModalContextProvider>
-                        <WindowBar/>
-                        <MiddleRow />
-                        <StatusBarLogic />
-                        <AddFileModalContentLogic/>
-                    </AddFileModalContextProvider>
-                    <ShareModalContentLogic/>
-                </ShareModalContextProvider>
+                <FileReducerContextProvider/>
+                    <ShareModalContextProvider>
+                        <AddFileModalContextProvider>
+                                <WindowBar/>
+                                <MiddleRow />
+                                <StatusBarLogic />
+                                <AddFileModalContentLogic/>
+                                <ShareModalContentLogic/>
+                        </AddFileModalContextProvider>
+                    </ShareModalContextProvider>
+                <FileReducerContextProvider/>
             </StatusContextProvider>
         </div>
     )

@@ -1,8 +1,8 @@
-import React , {useReducer} from 'react'
-import {fileReducer , initialState} from '../reducers/FileReducer'
+import React , {useContext} from 'react'
+import FileReducerContext from '../contexts/FileReducerContext'
 import Menu from './Menu'
 export default function MenuLogic(){
-    const [allFiles , allFilesDispatch] = useReducer(fileReducer , initialState) 
+    const [allFiles , allFilesDispatch] = useContext(FileReducerContext)
     return (
         <Menu allFiles={allFiles}/>
     )

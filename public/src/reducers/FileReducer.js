@@ -1,4 +1,3 @@
-import React , {useReducer} from 'react'
 const fileInstance = {
     name : '',
     extention : '',
@@ -8,24 +7,27 @@ const fileInstance = {
     lastUpdated : '',
     current:false
 }
+export const initialState = {
+    allFiles : [],
+    currentFile : {
+        name : '',
+        extention : '',
+        lang : '',
+        timeCreated : '',
+        content : '',
+        lastUpdated : '',
+        current:false
+    }
+}
 
-const initialState = {
-    currentFile : {}, 
-    allFiles : []
-} 
-
-function fileReducer(state , action){
+export const fileReducer = (state , action) => {
     switch(action.type){
         case 'ADD_FILE':
-            const newState = {
-                ...state,
-                allFiles : [...state.allFiles , {...fileInstance , ...action.payload }],
-                currentFile: action.payload 
+            return {
+                allFiles: [...state.allFiles , action.payload.file],
+                currentFile : action.payload.file
             }
-            return newState
         default:
-            return state;
+            return state
     }
-} 
-
-export {fileReducer , initialState}
+}
