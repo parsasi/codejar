@@ -8,7 +8,11 @@ export default (fileName , fileExtention) => {
         'ini' : 'ini',
         'ts' : 'typescript',
         'php' : 'php',
-        'gitignore' : 'plaintext'
+        'gitignore' : 'plaintext',
+        'py' : 'python',
+        'java' : 'java',
+        'md' : 'markdown',
+        'sql' : 'sql'
     }
     const fileNameToLang = {
         'dockerfile' : 'dockerfile'

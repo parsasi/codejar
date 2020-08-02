@@ -1,10 +1,25 @@
 import React from 'react'
-import Monaco from './Monaco'
-import EditorContainer from './EditorContainer'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";  
+import EditorContainerLogic from './EditorContainer'
 export default function App(props){
     return (
-        <div className="App">
-             <EditorContainer />
-        </div>
+        <Router>
+            <div className="App">
+                <Switch>
+                    <Route path="/" exact>
+                        <div></div>
+                    </Route>
+                    <Route path="/ws/:ws_id">
+                        <EditorContainerLogic />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+
     )
 }
