@@ -6,13 +6,14 @@ import {
     Link
   } from "react-router-dom";  
 import EditorContainerLogic from './EditorContainer'
+import LandingPageContainer from './LandingPageContainer'
 export default function App(props){
     return (
         <Router>
             <div className="App">
                 <Switch>
                     <Route path="/" exact>
-                        <div></div>
+                        <LandingPageContainer />
                     </Route>
                     <Route path="/ws/:ws_id">
                         <EditorContainerLogic />
