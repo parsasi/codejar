@@ -1,5 +1,6 @@
 import React, { useContext , useState  } from 'react'
 import {useDispatch} from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 import AddFileModalContent from './AddFileModalContent'
 import AddFileModalContext from '../contexts/AddFileModalContext'
 import Modal from './Modal'
@@ -11,22 +12,23 @@ export default function AddFileModalContentLogic(props){
     const [isOpen , setIsOpen] = useContext(AddFileModalContext)
     const [validationError , setValidationError] = useState(false)
     const dispatch = useDispatch()
-    function addToFiles(text, extention, lang){
+    function addToFiles(text){
         text = sanitize(text)
         if(validateFileName(text)){
-            getExtention(text)
             setValidationError(false)
+            const {name , extention} = getExtention(text)
             const now = new Date()
             const newFile = {
-                name : text,
-                extention : extention || '.js',
-                lang: lang || 'javascript',
+                id : nanoid(),
+                name : name,
+                extention : extention,
+                lang: 'javascript',
                 content : '',
                 timeCreated : now,
                 lastUpdated : now,
-                current : true
+                current : true,
+                saved : false
             }
-            console.log(addFile)
             dispatch(addFile(newFile))
         }else{
             setValidationError(true)
