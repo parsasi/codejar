@@ -1,9 +1,9 @@
 import React , {useState} from 'react'
-import Modal from 'react-modal'
+import ModalElement from 'react-modal'
 import '../styles/Modal.css'
 import Fa from './Fa'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-export default (props) => {
+export default function Modal(props){
     const customStyles = {
         content : {
           top                   : '50%',
@@ -16,7 +16,7 @@ export default (props) => {
         }
       };
     return (
-        <Modal
+        <ModalElement
           isOpen={props.open}
           onAfterOpen={props.onAfterOpen && props.onAfterOpen}
           style={customStyles}
@@ -29,7 +29,7 @@ export default (props) => {
               </div>
               <div className="ModalInnerHeaderCloseContainer">
                 <button className="ModalInnerHeaderCloseButton" onClick={() => props.setIsOpen(false)}>
-                  <Fa icon={faTimes} size="md"/>
+                  <Fa icon={faTimes} size="lg"/>
                 </button>
               </div>
             </div>
@@ -37,7 +37,7 @@ export default (props) => {
               {props.children }
             </div>
           </div>
-        </Modal>
+        </ModalElement>
     )
 }
 // <Modal open={true} title="Welcome Message"><h1>Hello World</h1></Modal>

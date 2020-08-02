@@ -4,7 +4,7 @@ import StatusContext from '../contexts/StatusContext'
 import ShareModalContent from './ShareModalContent'
 import ShareModalContext from '../contexts/ShareModalContext'
 import Modal from './Modal'
-export default (props) => {
+export default function ShareModalContentLogic(props){
     let [, setStatus] = useContext(StatusContext)
     let [isOpen , setIsOpen] = useContext(ShareModalContext)
     function CopyCodeHandler(e , id){

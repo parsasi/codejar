@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/StatusBar.css'
-export default (props) => {
+export default function StatusBar(props){
     return props.visible ? (
         <div className="StatusBarContainer">
             <span className="StatusBarTex">{props.text}</span>

@@ -8,20 +8,24 @@ import ShareModalContentLogic from './ShareModalContentLogic'
 import ShareModalContextProvider from './ShareModalContextProvider'
 import AddFileModalContextProvider from './AddFileModalContextProvider'
 import AddFileModalContentLogic from './AddFileModalContentLogic'
-export default (props) => {
+import store from '../stores/store'
+import {Provider} from 'react-redux'
+export default function EditorContainer(props){
     return (
         <div className="EditorContainer">
-            <StatusContextProvider>
-                <ShareModalContextProvider>
-                    <AddFileModalContextProvider>
-                        <WindowBar/>
-                        <MiddleRow />
-                        <StatusBarLogic />
-                        <AddFileModalContentLogic/>
-                    </AddFileModalContextProvider>
-                    <ShareModalContentLogic/>
-                </ShareModalContextProvider>
-            </StatusContextProvider>
+            <Provider store={store}>
+                <StatusContextProvider>
+                    <ShareModalContextProvider>
+                        <AddFileModalContextProvider>
+                                <WindowBar/>
+                                <MiddleRow />
+                                <StatusBarLogic />
+                                <AddFileModalContentLogic/>
+                                <ShareModalContentLogic/>
+                        </AddFileModalContextProvider>
+                    </ShareModalContextProvider>
+                </StatusContextProvider>
+            </Provider>
         </div>
     )
 }

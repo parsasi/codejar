@@ -2,7 +2,7 @@ import React from 'react'
 import Fa from './Fa'
 import { faCopy  } from '@fortawesome/free-solid-svg-icons'
 import '../styles/ShareModalContent.css'
-export default (props) => {
+export default function ShareModalContent(props){
     return(
         <div className="ShareModalContantContainer">
             <div className="ShareModalContantSub">

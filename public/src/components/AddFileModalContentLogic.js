@@ -1,13 +1,33 @@
-import React, { useContext , useState } from 'react'
+import React, { useContext , useState  } from 'react'
+import {useDispatch , useSelector} from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 import AddFileModalContent from './AddFileModalContent'
 import AddFileModalContext from '../contexts/AddFileModalContext'
 import Modal from './Modal'
 import {validateFileName } from '../helpers/validator'
-export default (props) => {
+import {addFile} from '../reducers/FileReducer'
+import sanitize from '../helpers/sanitize'
+import createFileObj from '../helpers/createFileObj'
+import isDuplicate from '../helpers/isDuplicate'
+export default function AddFileModalContentLogic(props){
     const [isOpen , setIsOpen] = useContext(AddFileModalContext)
     const [validationError , setValidationError] = useState(false)
+    const dispatch = useDispatch()
+    const allFileNames = useSelector(state => state.files.allFiles).map(item => item.name + '.' + item.extention)
     function addToFiles(text){
-        validateFileName(text) ? setValidationError(false) : setValidationError(true)
+        text = sanitize(text)
+        if(validateFileName(text)){
+            const newFileObj = createFileObj(text , nanoid()) 
+            if(!isDuplicate(newFileObj.name , newFileObj.extention , allFileNames)){
+                setValidationError(false)
+                dispatch(addFile(newFileObj))
+                setIsOpen(_ => false)
+            }else{
+                setValidationError(true)
+            }
+        }else{
+            setValidationError(true)
+        }
     }
     return (
         <Modal open={isOpen} setIsOpen={setIsOpen} title="Create a file">
