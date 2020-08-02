@@ -1,5 +1,5 @@
 import React, { useContext , useState  } from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch , useSelector} from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 import AddFileModalContent from './AddFileModalContent'
 import AddFileModalContext from '../contexts/AddFileModalContext'
@@ -7,29 +7,24 @@ import Modal from './Modal'
 import {validateFileName } from '../helpers/validator'
 import {addFile} from '../reducers/FileReducer'
 import sanitize from '../helpers/sanitize'
-import getExtention from '../helpers/getExtention'
+import createFileObj from '../helpers/createFileObj'
+import isDuplicate from '../helpers/isDuplicate'
 export default function AddFileModalContentLogic(props){
     const [isOpen , setIsOpen] = useContext(AddFileModalContext)
     const [validationError , setValidationError] = useState(false)
     const dispatch = useDispatch()
+    const allFileNames = useSelector(state => state.files.allFiles).map(item => item.name + '.' + item.extention)
     function addToFiles(text){
         text = sanitize(text)
         if(validateFileName(text)){
-            setValidationError(false)
-            const {name , extention} = getExtention(text)
-            const now = new Date()
-            const newFile = {
-                id : nanoid(),
-                name : name,
-                extention : extention,
-                lang: 'javascript',
-                content : '',
-                timeCreated : now,
-                lastUpdated : now,
-                current : true,
-                saved : false
+            const newFileObj = createFileObj(text , nanoid()) 
+            if(!isDuplicate(newFileObj.name , newFileObj.extention , allFileNames)){
+                setValidationError(false)
+                dispatch(addFile(newFileObj))
+                setIsOpen(_ => false)
+            }else{
+                setValidationError(true)
             }
-            dispatch(addFile(newFile))
         }else{
             setValidationError(true)
         }
