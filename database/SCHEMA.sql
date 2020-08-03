@@ -4,5 +4,6 @@ CREATE TABLE workspaces (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     public_code VARCHAR(20) NOT NULL UNIQUE,
     time_created TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP,
-    admin_code varchar(255) NOT NULL UNIQUE
+    admin_code varchar(255) NOT NULL ,
+    owner_email varchar(255)
 )

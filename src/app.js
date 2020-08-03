@@ -1,14 +1,14 @@
-module.exports = () => {
+module.exports = (db) => {
     const express = require('express')
     const app = express()
-    const workspacesRoute = require('./routes/workspaces')()
+    const workspacesRoute = require('./routes/workspaces')(db)
     const bodyParser = require('body-parser')
     const path = require('path')
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(bodyParser())
     
-    app.use(express.static('public/build'))
+    // app.use(express.static('public/build'))
 
     app.use('/ws' , workspacesRoute)
 

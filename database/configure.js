@@ -3,37 +3,42 @@ require('dotenv').config({path:__dirname+'/../.env'})
 const mysql = require("mysql")
 
 const db = {
-    conn :  mysql.createConnection({
+    _conn :  mysql.createConnection({
         host: process.env.MYSQL_HOST,
         user: process.env.MYSQL_USERNAME,
         password: process.env.MYSQL_PASSWORD,
         database: process.env.MYSQL_DB
     }), 
-    connect : () => {
+    _connect : () => {
         return new Promise((resolve , reject) => {
-            db.conn.connect((e) => {
+            db._conn.connect((e) => {
                 e ? reject(e) : resolve()
             })
         })
     },
-    end : () => {
+    _end : () => {
         return new Promise((resolve , reject) => {
-            db.conn.end(e => {
+            db._conn.end(e => {
                 e ? reject(e) : resolve()
             })
         })
     },
     query : (queryText , params) => {
         return new Promise((resolve , reject) => {
-            db.connect().then(_ => {
-                db.conn.query(queryText , params , (err , results) => {
-                    db.end().then(_ => console.log('Connection Closed')).catch(e => console.log(e)).finally(_ => err ? reject(err) : resolve(results))
+            db._connect()
+            .then(_ => {
+                db._conn.query(queryText , params , (err , results) => {
+                    db._end()
+                    .then(_ => console.log('Connection Closed'))
+                    .catch(e => console.log(e))
+                    .finally(_ => err ? reject(err) : resolve(results))
                 })
             }).catch(e => reject(e))
         })
     }
-
 }
+
+module.exports = db
 
 
 // db.query('SELECT 1' , []).then(results => console.log(results)).catch(console.log)
