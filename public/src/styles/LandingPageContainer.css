@@ -1,5 +1,29 @@
 .LandingPageLogoContainer{
-    width:100vw;
-    height:100vh;
     text-align: center;
+    margin-top:100px;
+}   
+.LandingPageLogo{
+    width:400px;
+}
+.LandingPageButtonsContainer{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:20px;
+}
+.LandingPageButton{
+    min-width:400px;
+    padding:10px 20px;
+    cursor:pointer;
+    border:none;
+    background-color:#22252B;
+    color:#ffffff;
+    border-radius: 5px;
+    margin-top:20px;
+    font-size:1.5rem;
+    transition: 0.1s linear all;
+}
+.LandingPageButton:hover{
+    background: #000000;
 }
