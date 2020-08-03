@@ -20,7 +20,10 @@
   "author": "Parsa Safavi",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "react-router-dom": "^5.2.0"
+    "mysql": "^2.18.1",
+    "react-router-dom": "^5.2.0",
+    "uuid": "^8.3.0"
   }
 }
