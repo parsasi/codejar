@@ -4,9 +4,15 @@ module.exports = (db) => {
     const workspacesRoute = require('./routes/workspaces')(db)
     const bodyParser = require('body-parser')
     const path = require('path')
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: false }));
-    app.use(bodyParser())
+
+    // app.use(express.json());
+    // app.use(express.urlencoded({ extended: false }));
+    
+    //Bodyparser url decoding and json parsing
+    app.use(bodyParser.urlencoded({
+        extended: true
+      }));
+    app.use(bodyParser.json()); 
     
     // app.use(express.static('public/build'))
 
