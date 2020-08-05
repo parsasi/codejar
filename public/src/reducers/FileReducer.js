@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createSlice  } from '@reduxjs/toolkit'
+import fetchFiles from '../thunks/fetchFilesThunk'
 export const filesSlice = createSlice({
   name: 'files',
   initialState: {
@@ -14,7 +14,9 @@ export const filesSlice = createSlice({
             lastUpdated : '',
             current:false,
             saved : false
-        }
+        },
+        loadingFileStatus : 'idle',
+        error : null
     },
     reducers:{
         addFile: (state, action) => {
@@ -31,6 +33,18 @@ export const filesSlice = createSlice({
                 item.current = item.id === action.payload.id ? true : false
             })
             state.currentFile = state.allFiles.find(item => item.id === action.payload.id)
+        }
+    },
+    extraReducers : {
+        [fetchFiles.pending] : (state , action) => {
+            state.loadingFilesStatus = 'pending'
+        },
+        [fetchFiles.fulfilled] : (state , action) => {
+            state.loadingFilesStatus = 'fulfilled'
+        },
+        [fetchFiles.rejected] : (state , action) => {
+            state.loadingFileStatus = 'failed'
+            state.error =  action.error
         }
     }
 })

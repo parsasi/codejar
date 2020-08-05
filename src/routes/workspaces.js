@@ -31,6 +31,7 @@ module.exports = (db) => {
             res.json(results)
         })
         .catch(e => {
+            console.log(e)
             res.statusCode = 500
             res.json({message : 'Something went wrong'})
         })
