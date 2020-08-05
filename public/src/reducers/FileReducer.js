@@ -1,20 +1,22 @@
 import { createSlice  } from '@reduxjs/toolkit'
 import fetchFiles from '../thunks/fetchFilesThunk'
+
+const fileInstance = {
+    id: '',
+    name : '',
+    extention : '',
+    lang : '',
+    timeCreated : '',
+    content : '',
+    lastUpdated : '',
+    current:false,
+    saved : false
+}
 export const filesSlice = createSlice({
   name: 'files',
   initialState: {
         allFiles : [],
-        currentFile : {
-            id: '',
-            name : '',
-            extention : '',
-            lang : '',
-            timeCreated : '',
-            content : '',
-            lastUpdated : '',
-            current:false,
-            saved : false
-        },
+        currentFile : fileInstance,
         loadingFileStatus : 'idle',
         error : null
     },
@@ -41,6 +43,8 @@ export const filesSlice = createSlice({
         },
         [fetchFiles.fulfilled] : (state , action) => {
             state.loadingFilesStatus = 'fulfilled'
+            const loadedFiles = action.payload.data
+            state.allFiles = state.allFiles.concat(loadedFiles.map(item => ({...fileInstance , name : item.name , extention : item.extention , id : item.nano_id})))
         },
         [fetchFiles.rejected] : (state , action) => {
             state.loadingFileStatus = 'failed'
