@@ -94,5 +94,22 @@ module.exports = (db) => {
         })
     })
 
+
+    router.post('/content' , (req , res) => {
+        const {nanoid : nanoId , content : fileContent} = req.body
+        if(!nanoId && !fileContent){
+            res.statusCode = 400
+            res.json({message : 'Somthing went wrong.'})
+            return
+        }
+        const updateFileContent = require('../controllers/updateFileContent')(db)
+        updateFileContent(nanoId , fileContent)
+        .then(_ => res.json())
+        .catch(e => {
+            res.statusCode = 500
+            res.json({message : 'Somthing went wrong'})
+        })
+    })
+
     return router
 }

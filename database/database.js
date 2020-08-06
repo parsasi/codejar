@@ -25,7 +25,13 @@ module.exports = {
     getFileContent : (nanoId) => {
         return db.query(`
                 SELECT content FROM files
-                WHERE nano_id = ?         
-                ` , [nanoId])
-    } 
+                WHERE nano_id = ?`
+                 , [nanoId])
+    },
+    updateFileContent : (nanoId , newContent) => {
+        return db.query(`
+                UPDATE files SET content = ? , time_saved = CURRENT_TIMESTAMP
+                WHERE nano_id = ?`
+                , [newContent , nanoId])
+    }
 }
