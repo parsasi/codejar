@@ -14,7 +14,7 @@ export default (text , id) => {
         lastUpdated : now,
         current : true,
         saved : false,
-        syncing : true
+        syncing : false
     }
     return newFile
 }

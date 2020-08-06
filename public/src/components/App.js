@@ -5,7 +5,7 @@ import {
     Route,
     Link
   } from "react-router-dom";  
-import EditorContainerLogic from './EditorContainerLogic'
+import WorkspaceContainer from './WorkspaceContainer'
 import LandingPageContainer from './LandingPageContainer'
 import store from '../stores/store'
 import {Provider} from 'react-redux'
@@ -19,7 +19,7 @@ export default function App(props){
                             <LandingPageContainer />
                         </Route>
                         <Route path="/ws/:ws_id">
-                            <EditorContainerLogic />
+                            <WorkspaceContainer />
                         </Route>
                     </Switch>
                 </div>
