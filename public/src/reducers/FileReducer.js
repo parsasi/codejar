@@ -10,7 +10,8 @@ const fileInstance = {
     content : '',
     lastUpdated : '',
     current:false,
-    saved : false
+    saved : false,
+    loaded: false
 }
 export const filesSlice = createSlice({
   name: 'files',
