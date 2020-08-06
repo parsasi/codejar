@@ -10,7 +10,7 @@ export default function Menu(props){
             <div className="MenuLogo">
                 <img src={Logo} alt="Logo"/>
             </div>
-            {props.allFiles.map(item => (<MenuItemLogic current={item.current} save={item.saved} file={{extention : item.extention , name:item.name , id : item.id , syncing : item.syncing}}/>))}
+            {props.allFiles.map(item => (<MenuItemLogic current={item.current} save={item.saved} file={{extention : item.extention , name:item.name , id : item.id , syncing : item.syncing , id : item.id}}/>))}
             <AddFileButtonLogic />
         </div>
     )

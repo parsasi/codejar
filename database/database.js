@@ -21,5 +21,11 @@ module.exports = {
                 SELECT public_code , admin_code FROM workspaces
                 WHERE public_code = ? OR admin_code = ?`
                 ,[id , id])
-    }
+    },
+    getFileContent : (nanoId) => {
+        return db.query(`
+                SELECT content FROM files
+                WHERE nano_id = ?         
+                ` , [nanoId])
+    } 
 }

@@ -1,6 +1,6 @@
 import { createSlice  } from '@reduxjs/toolkit'
 import fetchFiles from '../thunks/fetchFilesThunk'
-
+import fetchContent from '../thunks/fetchContentThunk'
 const fileInstance = {
     id: '',
     name : '',
@@ -50,6 +50,25 @@ export const filesSlice = createSlice({
         [fetchFiles.rejected] : (state , action) => {
             state.loadingFileStatus = 'failed'
             state.error =  action.error
+        },
+        [fetchContent.pending] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg){
+                    item.syncing = true
+                }
+            })
+        },
+        [fetchContent.fulfilled] : (state , action) => {
+            console.log(action.payload)
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg){
+                    item.syncing = false
+                    item.content = action.payload.data.content
+                }
+            })
+        },
+        [fetchContent.rejected] : (state , action) => {
+            console.log('Rejected : ' , action.error)
         }
     }
 })

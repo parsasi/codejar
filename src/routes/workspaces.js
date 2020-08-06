@@ -70,7 +70,28 @@ module.exports = (db) => {
                 res.json(firstFoundRow)
             }
         })
+        .catch(e => {
+            console.log(e)
+            res.statusCode = 500
+            res.json({message : 'Something went wrong'})
+        })
+    })
 
+    router.get('/content' , (req , res) => {
+        const nanoId = req.query.nanoid
+        if(!nanoId){
+            res.statusCode = 400
+            res.json({message : 'Parameter workspaceId is required, but not provided.'})
+            return
+        }
+        const getFileContent = require('../controllers/getFileContent')(db)
+        getFileContent(nanoId)
+        .then(results => res.json(results))
+        .catch(e => {
+            console.log(e)
+            res.statusCode = 500
+            res.json({message : 'Something went wrong'})
+        })
     })
 
     return router
