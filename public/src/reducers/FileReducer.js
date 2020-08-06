@@ -18,7 +18,7 @@ export const filesSlice = createSlice({
   initialState: {
         allFiles : [],
         currentFile : fileInstance,
-        loadingFileStatus : 'idle',
+        loadingFilesStatus : 'idle',
         error : null
     },
     reducers:{
@@ -48,7 +48,7 @@ export const filesSlice = createSlice({
             state.allFiles = state.allFiles.concat(loadedFiles.map(item => ({...fileInstance , name : item.name , extention : item.extention , id : item.nano_id})))
         },
         [fetchFiles.rejected] : (state , action) => {
-            state.loadingFileStatus = 'failed'
+            state.loadingFilesStatus = 'failed'
             state.error =  action.error
         },
         [fetchContent.pending] : (state , action) => {

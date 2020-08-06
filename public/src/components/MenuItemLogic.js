@@ -16,7 +16,7 @@ export default function MenuItemLogic(props){
 
     const menuItemClickHandler = (e) => {
         const id = e.currentTarget.getAttribute('_id')
-        dispatch(changeCurrentFile({id}))
+        !props.file.syncing && dispatch(changeCurrentFile({id}))
     }
 
     useEffect(() => {

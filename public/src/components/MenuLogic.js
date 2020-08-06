@@ -4,12 +4,14 @@ import { useSelector , useDispatch } from 'react-redux'
 import Menu from './Menu'
 export default function MenuLogic(){
     const allFiles = useSelector(state => state.files.allFiles)
-    const filesLoading  = useSelector(state => state.files.loadingFiles)
+    const filesLoadingStatus  = useSelector(state => state.files.loadingFilesStatus)
+    console.log(filesLoadingStatus)
+    const loading = filesLoadingStatus === 'pending'
     const wsId = useSelector(state => state.workspace.workspaceId)
     const dispatch = useDispatch()
     
-    useEffect(_ => dispatch(fetchFiles(wsId)) , [filesLoading , dispatch])
+    useEffect(_ => dispatch(fetchFiles(wsId)) , [])
     return (
-        <Menu allFiles={allFiles}/>
+        <Menu allFiles={allFiles} loading={loading}/>
     )
 }
