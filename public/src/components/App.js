@@ -15,11 +15,11 @@ export default function App(props){
             <Provider store={store}>
                 <div className="App">
                     <Switch>
-                        <Route path="/" exact>
-                            <LandingPageContainer />
-                        </Route>
                         <Route path="/ws/:ws_id">
                             <WorkspaceContainer />
+                        </Route>
+                         <Route path="/">
+                            <LandingPageContainer />
                         </Route>
                     </Switch>
                 </div>
