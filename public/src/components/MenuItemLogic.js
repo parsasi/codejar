@@ -18,7 +18,7 @@ export default function MenuItemLogic(props){
         dispatch(changeCurrentFile({id}))
     }
 
-    return (<MenuItem file={props.file} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)
+    return (<MenuItem file={props.file} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)
 }
 
 function figureOutTheIcon(extention){

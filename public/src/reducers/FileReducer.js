@@ -11,7 +11,7 @@ const fileInstance = {
     lastUpdated : '',
     current:false,
     saved : false,
-    loaded: false
+    syncing: false
 }
 export const filesSlice = createSlice({
   name: 'files',
