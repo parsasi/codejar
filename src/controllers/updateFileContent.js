@@ -1,7 +1,7 @@
 module.exports = (db) => {
     return (nanoId , newContent , workspaceId) => {
         return new Promise((resolve , reject) => {
-        const confirmWorkspace = require('./confirmWorkspace')(db)
+        const confirmWorkspace = require('./getUpdateFileContentAccess')(db)
            confirmWorkspace(workspaceId , nanoId)
            .then(results => {
                if(results){

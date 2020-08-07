@@ -8,7 +8,7 @@ module.exports = {
             ( ? , ? , ?)`,
             [publicCode , adminCode , email])
     },
-    confirmWorkspace : (workspaceId , nanoId) => {
+    getUpdateFileContentAccess : (workspaceId , nanoId) => {
         return db.query(`
             SELECT workspaces.id FROM workspaces
             JOIN files ON workspaces.id = files.workspace_id
@@ -18,6 +18,12 @@ module.exports = {
             workspaces.admin_code = ?
             `
             , [nanoId , workspaceId])
+    },
+    getCreateFileAccess : (workspaceId) => {
+        return db.query(`
+            SELECT id FROM workspaces
+            WHERE admin_code = ?
+            ` , [workspaceId])
     },
     getWorkspaceFiles : (id) => {
         return db.query(`

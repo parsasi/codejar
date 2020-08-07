@@ -1,7 +1,7 @@
 module.exports = (db) => {
     return (workspaceId , nanoId) => {
         return new Promise((resolve , reject) => {
-            db.confirmWorkspace(workspaceId , nanoId)
+            db.getUpdateFileContentAccess(workspaceId , nanoId)
             .then(results => {
                if(results[0]){
                    resolve(true)

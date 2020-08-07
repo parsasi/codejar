@@ -2,6 +2,7 @@ import { createSlice  } from '@reduxjs/toolkit'
 import fetchFiles from '../thunks/fetchFilesThunk'
 import fetchContent from '../thunks/fetchContentThunk'
 import postContent from '../thunks/postFileContent'
+import postFile from '../thunks/postFileCreate'
 const fileInstance = {
     id: '',
     name : '',
@@ -87,6 +88,25 @@ export const filesSlice = createSlice({
             })
         },
         [postContent.rejected] : (state , action) => {
+            console.log(action.error)
+        },
+        [postFile.pending] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = true
+                }
+            }) 
+        },
+        [postFile.fulfilled] : (state , action) => {
+            const now = new Date()
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.lastUpdated = now
+                }
+            }) 
+        },
+        [postFile.rejected] : (state , action) => {
             console.log(action.error)
         },
     }

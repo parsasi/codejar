@@ -113,16 +113,17 @@ module.exports = (db) => {
 
 
     router.post('/file' , (req , res) => {
-        const {nanoid : nanoId , name , extention , workspaceid : workspaceId} = req.body
+        const {nanoid : nanoId , name , extention , workspaceid :workspaceId} = req.body
         if(!(nanoId && name && extention && extention && workspaceId)){
             res.statusCode = 400
             res.json({message : 'Somthing went wrong.'})
             return
         }
         const createFile = require('../controllers/createFile')(db)
-        createFile(name , extention , nanoId , worksapceId)
+        createFile(name , extention , nanoId , workspaceId)
         .then(_ => res.json())
         .catch(e => {
+            console.log('error: ' , e)
             res.statusCode = 500
             res.json({message : 'Something went wrong'})
         })
