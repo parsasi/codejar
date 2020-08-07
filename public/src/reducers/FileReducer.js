@@ -13,7 +13,8 @@ const fileInstance = {
     lastUpdated : '',
     current:false,
     saved : false,
-    syncing: false
+    syncing: false,
+    error : false
 }
 export const filesSlice = createSlice({
   name: 'files',
@@ -69,7 +70,12 @@ export const filesSlice = createSlice({
             })
         },
         [fetchContent.rejected] : (state , action) => {
-            
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg){
+                    item.syncing = false
+                    item.error = true
+                }
+            })
         },
         [postContent.pending] : (state , action) => {
             state.allFiles.map(item => {
@@ -84,11 +90,17 @@ export const filesSlice = createSlice({
                 if(item.id === action.meta.arg.nanoId){
                     item.syncing = false
                     item.lastUpdated = now
+                    item.error = false
                 }
             })
         },
         [postContent.rejected] : (state , action) => {
-            console.log(action.error)
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.error = true
+                }
+            })
         },
         [postFile.pending] : (state , action) => {
             state.allFiles.map(item => {
@@ -103,11 +115,17 @@ export const filesSlice = createSlice({
                 if(item.id === action.meta.arg.nanoId){
                     item.syncing = false
                     item.lastUpdated = now
+                    item.error = false
                 }
             }) 
         },
         [postFile.rejected] : (state , action) => {
-            console.log(action.error)
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.error = true
+                }
+            }) 
         },
     }
 })

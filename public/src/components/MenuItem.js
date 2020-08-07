@@ -1,6 +1,6 @@
 import React from 'react'
 import Fa from './Fa'
-import { faSync } from '@fortawesome/free-solid-svg-icons'
+import { faSync , faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 export default function MenuItem(props){
     return (
         <a _id={props.file.id} className={`${props.current} ${props.save} ${props.extention}`} onClick={props.menuItemClickHandler}>
@@ -13,6 +13,7 @@ export default function MenuItem(props){
                 </div>
                 <div className="MenuItemIconPane">
                     {props.syncing && <Fa icon={faSync} spin={true} />}
+                    {props.error && <Fa icon={faExclamationTriangle}/>}
                 </div>
             </div>
         </a>
