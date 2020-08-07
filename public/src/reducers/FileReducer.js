@@ -85,7 +85,10 @@ export const filesSlice = createSlice({
                     item.lastUpdated = now
                 }
             })
-        }
+        },
+        [postContent.rejected] : (state , action) => {
+            console.log(action.error)
+        },
     }
 })
 

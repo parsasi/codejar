@@ -22,7 +22,7 @@ const db = {
                 }
                 connection.query(queryText , params , (queryError ,results) => {
                     connection.release();
-                    return queryError ? rejects(this.query) : resolve(results)
+                    return queryError ? rejects(queryError) : resolve(results)
                 })
             })
         })
