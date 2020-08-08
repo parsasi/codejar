@@ -9,6 +9,7 @@ module.exports =  (db) => {
                     reject(new Error('No curresponding row for the provided nanoId.'))
                 }
             })
+            .catch(reject)
         })
     }
 }
