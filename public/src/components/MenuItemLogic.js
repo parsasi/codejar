@@ -1,6 +1,7 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {changeCurrentFile} from '../reducers/FileReducer'
+import fetchFileContent from '../thunks/fetchContentThunk'
 import MenuItem from './MenuItem'
 import { faCss3 , faHtml5 , faJs , faJava , faPython , faMarkdown } from '@fortawesome/free-brands-svg-icons'
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
@@ -9,16 +10,21 @@ import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
 export default function MenuItemLogic(props){
     const dispatch = useDispatch()
     const current = props.current ? "current" : ""
-    const save = props.save ? "save": "css"
+    const save = props.saved ? "save": "css"
     const extention = props.file.extention
     const icon = figureOutTheIcon(extention)
 
     const menuItemClickHandler = (e) => {
         const id = e.currentTarget.getAttribute('_id')
-        dispatch(changeCurrentFile({id}))
+        !props.file.syncing && dispatch(changeCurrentFile({id}))
     }
 
-    return (<MenuItem file={props.file} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)
+    useEffect(() => {
+        dispatch(fetchFileContent(props.file.id))
+    } , [])
+
+
+    return (<MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)
 }
 
 function figureOutTheIcon(extention){

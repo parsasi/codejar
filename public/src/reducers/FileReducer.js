@@ -1,20 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createSlice  } from '@reduxjs/toolkit'
+import fetchFiles from '../thunks/fetchFilesThunk'
+import fetchContent from '../thunks/fetchContentThunk'
+import postContent from '../thunks/postFileContent'
+import postFile from '../thunks/postFileCreate'
+import createFileObj from '../helpers/createFileObj'
+const fileInstance = {
+    id: '',
+    name : '',
+    extention : '',
+    lang : '',
+    timeCreated : '',
+    content : '',
+    lastUpdated : '',
+    current:false,
+    saved : false,
+    syncing: false,
+    error : false
+}
 export const filesSlice = createSlice({
   name: 'files',
   initialState: {
         allFiles : [],
-        currentFile : {
-            id: '',
-            name : '',
-            extention : '',
-            lang : '',
-            timeCreated : '',
-            content : '',
-            lastUpdated : '',
-            current:false,
-            saved : false
-        }
+        currentFile : fileInstance,
+        loadingFilesStatus : 'idle',
+        error : null
     },
     reducers:{
         addFile: (state, action) => {
@@ -32,6 +41,96 @@ export const filesSlice = createSlice({
             })
             state.currentFile = state.allFiles.find(item => item.id === action.payload.id)
         }
+    },
+    extraReducers : {
+        [fetchFiles.pending] : (state , action) => {
+            state.loadingFilesStatus = 'pending'
+        },
+        [fetchFiles.fulfilled] : (state , action) => {
+            state.loadingFilesStatus = 'fulfilled'
+            const loadedFiles = action.payload.data
+            // state.allFiles = state.allFiles.concat(loadedFiles.map(item => (createFileObj(item.name , item.nano_id , item.extention))))
+            //TODO: make createFileObj get an optional third argument for extention so that it won't re-extract the extention and filename
+            state.allFiles = state.allFiles.concat(loadedFiles.map(item => (createFileObj(item.name.concat('.' , item.extention) , item.nano_id))))
+        },
+        [fetchFiles.rejected] : (state , action) => {
+            state.loadingFilesStatus = 'failed'
+            state.error =  action.error
+        },
+        [fetchContent.pending] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg){
+                    item.syncing = true
+                }
+            })
+        },
+        [fetchContent.fulfilled] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg){
+                    item.syncing = false
+                    item.content = action.payload.data.content
+                }
+            })
+        },
+        [fetchContent.rejected] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg){
+                    item.syncing = false
+                    item.error = true
+                }
+            })
+        },
+        [postContent.pending] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = true
+                }
+            })
+        },
+        [postContent.fulfilled] : (state , action) => {
+            const now = new Date()
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.lastUpdated = now
+                    item.error = false
+                    item.saved = true
+                }
+            })
+        },
+        [postContent.rejected] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.error = true
+                }
+            })
+        },
+        [postFile.pending] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = true
+                }
+            }) 
+        },
+        [postFile.fulfilled] : (state , action) => {
+            const now = new Date()
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.lastUpdated = now
+                    item.error = false
+                }
+            }) 
+        },
+        [postFile.rejected] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.error = true
+                }
+            }) 
+        },
     }
 })
 

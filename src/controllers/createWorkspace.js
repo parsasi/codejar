@@ -1,6 +1,5 @@
-const uuid = require('../helpers/uuid')
-
 module.exports =  (db) => {
+    const uuid = require('../helpers/uuid')
     return () => {
         return new Promise((resolve , reject) => {
             const adminCode = uuid()

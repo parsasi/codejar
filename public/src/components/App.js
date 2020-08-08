@@ -5,22 +5,22 @@ import {
     Route,
     Link
   } from "react-router-dom";  
-import EditorContainerLogic from './EditorContainer'
-import LandingPageContainer from './LandingPageContainer'
+import WorkspaceContainer from './WorkspaceContainer'
+import LandingPageContainerLoigc from './LandingPageContainerLogic'
+import store from '../stores/store'
+import {Provider} from 'react-redux'
 export default function App(props){
     return (
-        <Router>
-            <div className="App">
-                <Switch>
-                    <Route path="/" exact>
-                        <LandingPageContainer />
-                    </Route>
-                    <Route path="/ws/:ws_id">
-                        <EditorContainerLogic />
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
+        <Provider store={store}>
+            <Router>
+                    <div className="App">
+                        <Switch>
+                            <Route path="/ws/:ws_id" component={WorkspaceContainer} />
+                            <Route path="/" component={LandingPageContainerLoigc} />
+                        </Switch>
+                    </div>
+            </Router>
+        </Provider>
 
     )
 }

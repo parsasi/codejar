@@ -8,6 +8,11 @@
 	transition: all .2s ease;
 	-webkit-transition: all .2s ease;
 }
+.MenuFilesContainer{
+	/* margin-top:5px; */
+	/* box-shadow: inset 0 -2px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(0,0,0,.4); Bottom Shadow */
+	padding-bottom:5px;
+}
 .menu span {
 	display: block;
 	padding: 7px 10px 7px 22px;
@@ -17,12 +22,13 @@
 }
 .menu a {
 	display: block;
-	padding: 10px 10px 10px 40px;
+	padding: 10px 10px 10px 15px;
 	text-decoration: none;
 	color: rgba(255,255,255,.5);
 	box-shadow: inset 0 -1px 0 rgba(255,255,255,.05), inset 0 -2px 0 rgba(0,0,0,.1);
 	transition: all .08s ease;
 	-webkit-transition: all .08s ease;
+	cursor:pointer;
 }
 .menu a:hover {
 	color: rgba(255,255,255,.7);
@@ -33,6 +39,10 @@
 	color: rgba(100,104,106,1);
 }
 .menu a.current {
+	background: rgba(0,0,0,.08);
+	color: rgba(255,255,255,.9);
+}
+.menu a.save {
 	background: rgba(0,0,0,.08);
 	color: rgba(255,255,255,.9);
 }
@@ -64,11 +74,30 @@
 
 .MenuLogo{
     width:80%;
-    padding:0 10%;
-    height:40px;
-    text-align:center;
+    padding:10px 10%;
+    min-height:40px;
+	text-align:center;
+	box-shadow: inset 0 -2px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(0,0,0,.4); /*Bottom Shadow*/
 }
 .MenuLogo img{
-    height:30px;
-    margin:5px auto;
+	max-width:90%;
+	margin:5px auto;
+}
+.MenuItemPanes{
+	display: flex;
+	flex-direction: row;
+	width:100%;
+}
+.MenuItemFilePane{
+	flex-grow: 2;
+}
+.MenuItemIconPane{
+	/* justify-content: flex-end; */
+}
+.MenuLoading{
+	width:100%;
+	font-size:2rem;
+	color:#f3f3f4;
+	opacity: 0.6;
+	text-align: center;
 }
