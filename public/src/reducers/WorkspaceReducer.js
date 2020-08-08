@@ -1,5 +1,6 @@
 import { createSlice  } from '@reduxjs/toolkit'
 import fetchCodes from '../thunks/fetchWorkspaceCodes'
+import postWorkspaceCreate from '../thunks/postWorkspaceCreate'
 export const workspaceSlice = createSlice({
   name: 'workspace',
   initialState: {
@@ -8,7 +9,7 @@ export const workspaceSlice = createSlice({
         publicCode : '',
         adminCode : '',
         codeFetchStatus : 'idle',
-        error : null
+        error : null,
     },
     reducers:{
         setworkspaceId: (state, action) => {
@@ -27,6 +28,17 @@ export const workspaceSlice = createSlice({
             state.workspaceId = action.payload.data["admin_code"] ? action.payload.data["admin_code"] : action.payload.data["public_code"]
         },
         [fetchCodes.rejected] : (state , action ) => {
+            state.codeFetchStatus = 'error'
+            state.error = action.error.message
+        },
+        [postWorkspaceCreate.pending]: (state , action) => {
+            state.codeFetchStatus = 'pending'
+        },
+        [postWorkspaceCreate.fulfilled]: (state , action) => {
+            state.codeFetchStatus = 'fulfilled'
+            state.workspaceId = action.payload.data.adminCode
+        },
+        [postWorkspaceCreate.rejected]: (state , action) => {
             state.codeFetchStatus = 'error'
             state.error = action.error.message
         }

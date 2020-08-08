@@ -12,7 +12,7 @@ import AddFileModalContentLogic from './AddFileModalContentLogic'
 export default function EditorContainer(props){
     return (
         <div className="EditorContainer">
-            <StatusContextProvider>
+             <StatusContextProvider>
                 <ShareModalContextProvider>
                     <AddFileModalContextProvider>
                             <WindowBar/>

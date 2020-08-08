@@ -10,7 +10,7 @@ import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
 export default function MenuItemLogic(props){
     const dispatch = useDispatch()
     const current = props.current ? "current" : ""
-    const save = props.save ? "save": "css"
+    const save = props.saved ? "save": "css"
     const extention = props.file.extention
     const icon = figureOutTheIcon(extention)
 

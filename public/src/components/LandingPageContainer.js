@@ -8,7 +8,7 @@ export default function LandingPageContainer(props){
                 <img className="LandingPageLogo" src={logo} alt="Code Jar Logo"/>
             </div>
             <div className="LandingPageButtonsContainer">
-                <button className="LandingPageButton"> CREATE A WORKSPACE </button>
+                <button className="LandingPageButton" onClick={props.newWorkspaceHandler}> CREATE A WORKSPACE </button>
                 <button className="LandingPageButton"> GO TO A WORKSPACE </button>
             </div>
         </div>
