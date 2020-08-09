@@ -39,6 +39,7 @@ export default function DragZoneContainer(prpos){
                     dispatch(addFile(newFileObj))
                     dispatch(postFile({name : newFileObj.name , extention :  newFileObj.extention , nanoId :  newFileObj.id , workspaceId  , content : newFileObj.content} ))
                     setFileStatus(() => 'idle')
+                    setIsDraggedOver(false)
                 })
                 .catch( setFileStatus(() => 'error'))
             }else{
