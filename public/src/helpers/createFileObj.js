@@ -1,7 +1,11 @@
 import getExtention from './getExtention'
 import getFileLang from './getFilelang'
-export default (text , id , content = '') => {
-    const {name , extention} = getExtention(text)
+export default ({name , extention , id , content , }) => {
+    if(!extention){
+        const nameAndExtention = getExtention(name)
+        name = nameAndExtention.name
+        extention = nameAndExtention.extention
+    }
     const now = new Date()
     const lang = getFileLang(name , extention)
     const newFile = {

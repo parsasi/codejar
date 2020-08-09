@@ -51,9 +51,7 @@ export const filesSlice = createSlice({
         [fetchFiles.fulfilled] : (state , action) => {
             state.loadingFilesStatus = 'fulfilled'
             const loadedFiles = action.payload.data
-            // state.allFiles = state.allFiles.concat(loadedFiles.map(item => (createFileObj(item.name , item.nano_id , item.extention))))
-            //TODO: make createFileObj get an optional third argument for extention so that it won't re-extract the extention and filename
-            state.allFiles = state.allFiles.concat(loadedFiles.map(item => (createFileObj(item.name.concat('.' , item.extention) , item.nano_id))))
+            state.allFiles = state.allFiles.concat(loadedFiles.map(item => (createFileObj({name : item.name , extention : item.extention , id : item.nano_id}))))
         },
         [fetchFiles.rejected] : (state , action) => {
             state.loadingFilesStatus = 'failed'

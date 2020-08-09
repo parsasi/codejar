@@ -8,7 +8,7 @@ export default function RightSideBarUpload(props){
         <div className="RightSideBarUpload">
             <DragZoneLogic>
                 <Fa size="lg" icon={faFileUpload}/>
-                <p className="RightSideBarUploadText">Upload Files</p>
+                <p className="RightSideBarUploadText">Upload Files <br/> (Drag files here)</p>
             </DragZoneLogic>
         </div>
     )

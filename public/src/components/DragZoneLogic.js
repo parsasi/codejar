@@ -35,7 +35,7 @@ export default function DragZoneContainer(prpos){
                 setFileStatus(() => 'pending')
                 readFileContent(file)
                 .then(results => {
-                    const newFileObj = createFileObj(file.name , nanoid() , results)
+                    const newFileObj = createFileObj({name : file.name , id : nanoid() , content :  results})
                     dispatch(addFile(newFileObj))
                     dispatch(postFile({name : newFileObj.name , extention :  newFileObj.extention , nanoId :  newFileObj.id , workspaceId  , content : newFileObj.content} ))
                     setFileStatus(() => 'idle')
