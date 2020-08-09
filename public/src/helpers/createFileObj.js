@@ -1,6 +1,6 @@
 import getExtention from './getExtention'
 import getFileLang from './getFilelang'
-export default (text , id) => {
+export default (text , id , content = '') => {
     const {name , extention} = getExtention(text)
     const now = new Date()
     const lang = getFileLang(name , extention)
@@ -9,7 +9,7 @@ export default (text , id) => {
         name : name,
         extention : extention,
         lang: lang,
-        content : '',
+        content : content,
         timeCreated : now,
         lastUpdated : now,
         current : true,
