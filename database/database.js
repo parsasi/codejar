@@ -51,11 +51,11 @@ module.exports = {
             WHERE nano_id = ?`
             , [newContent , nanoId])
     },
-    createFile : (fileName , extention , nanoId , workspaceId) => {
+    createFile : (fileName , extention , nanoId , workspaceId , content) => {
         return db.query(`
-            INSERT INTO files (name , extention , nano_id , workspace_id)
+            INSERT INTO files (name , extention , nano_id , workspace_id , content)
             VALUES 
-            (? , ? , ? , ?);
-            ` , [fileName , extention , nanoId , workspaceId])
+            (? , ? , ? , ? , ?);
+            ` , [fileName , extention , nanoId , workspaceId , content])
     }
 }

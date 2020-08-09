@@ -23,7 +23,7 @@ export default function AddFileModalContentLogic(props){
             if(!isDuplicate(newFileObj.name , newFileObj.extention , allFileNames)){
                 setValidationError(false)
                 dispatch(addFile(newFileObj))
-                dispatch(postFile({name : newFileObj.name , extention :  newFileObj.extention , nanoId :  newFileObj.id , workspaceId } ))
+                dispatch(postFile({name : newFileObj.name , extention :  newFileObj.extention , nanoId :  newFileObj.id , workspaceId  , content : ''} ))
                 setIsOpen(_ => false)
             }else{
                 setValidationError(true)
