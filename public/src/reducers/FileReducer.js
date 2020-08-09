@@ -1,4 +1,5 @@
 import { createSlice  } from '@reduxjs/toolkit'
+import hashFileContent from '../helpers/hashFileContent'
 import fetchFiles from '../thunks/fetchFilesThunk'
 import fetchContent from '../thunks/fetchContentThunk'
 import postContent from '../thunks/postFileContent'
@@ -15,7 +16,8 @@ const fileInstance = {
     current:false,
     saved : false,
     syncing: false,
-    error : false
+    error : false,
+    savedHash : ''
 }
 export const filesSlice = createSlice({
   name: 'files',
@@ -89,14 +91,17 @@ export const filesSlice = createSlice({
         },
         [postContent.fulfilled] : (state , action) => {
             const now = new Date()
+            const hashed = hashFileContent(action.meta.arg.content)
             state.allFiles.map(item => {
                 if(item.id === action.meta.arg.nanoId){
                     item.syncing = false
                     item.lastUpdated = now
                     item.error = false
                     item.saved = true
+                    item.savedHash = hashed
                 }
             })
+            state.currentFile.savedHash = state.currentFile.id === action.meta.arg.nanoId && hashed
         },
         [postContent.rejected] : (state , action) => {
             state.allFiles.map(item => {

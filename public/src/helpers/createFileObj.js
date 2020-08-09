@@ -15,7 +15,8 @@ export default (text , id , content = '') => {
         current : true,
         saved : false,
         syncing : false,
-        error : false
+        error : false,
+        savedHash : ''
     }
     return newFile
 }
