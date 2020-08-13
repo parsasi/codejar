@@ -1,0 +1,13 @@
+.LoadingWorkspace{
+    width:100vw;
+    height:100vh;
+    text-align: center;
+}
+.LoadingWorkspaceLogo{
+    margin:50px auto;
+    max-width:500px;
+}
+.LoadingWorkspaceLoader{
+    font-size:4rem;
+    color:#f3f3f4;
+}

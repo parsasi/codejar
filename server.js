@@ -1,4 +1,6 @@
-const app = require('./src/app')()
+const db = require('./database/database')
+
+const app = require('./src/app')(db)
 const PORT = process.env.PORT || 8080
 
 const serverStartHandler = (err) => {

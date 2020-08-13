@@ -1,9 +1,10 @@
 import React from 'react'
-import Menu from './Menu'
-export default (props) => {
+import MenuLogic from './MenuLogic'
+import '../styles/SideBar.css'
+export default function SideBar(props){
     return (
         <div className="SideBar">
-            <Menu />
+            <MenuLogic />
         </div>
     )
 }
