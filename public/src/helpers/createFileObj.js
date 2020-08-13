@@ -16,7 +16,7 @@ export default ({name , extention , id , content , }) => {
         content : content,
         timeCreated : now,
         lastUpdated : now,
-        current : true,
+        current : false,
         saved : false,
         syncing : false,
         error : false,
