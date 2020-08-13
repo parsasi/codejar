@@ -5,7 +5,7 @@ import AddFileModalContent from './AddFileModalContent'
 import AddFileModalContext from '../contexts/AddFileModalContext'
 import Modal from './Modal'
 import {validateFileName } from '../helpers/validator'
-import {addFile} from '../reducers/FileReducer'
+import {addFile , changeCurrentFile} from '../reducers/FileReducer'
 import sanitize from '../helpers/sanitize'
 import createFileObj from '../helpers/createFileObj'
 import isDuplicate from '../helpers/isDuplicate'
@@ -23,6 +23,7 @@ export default function AddFileModalContentLogic(props){
             if(!isDuplicate(newFileObj.name , newFileObj.extention , allFileNames)){
                 setValidationError(false)
                 dispatch(addFile(newFileObj))
+                dispatch(changeCurrentFile({id : newFileObj.id}))
                 dispatch(postFile({name : newFileObj.name , extention :  newFileObj.extention , nanoId :  newFileObj.id , workspaceId  , content : ''} ))
                 setIsOpen(_ => false)
             }else{

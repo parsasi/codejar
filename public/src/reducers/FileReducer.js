@@ -31,7 +31,7 @@ export const filesSlice = createSlice({
         addFile: (state, action) => {
             state.allFiles.map(item => item.current = false)
             state.allFiles.unshift(action.payload)
-            state.currentFile = action.payload
+            // state.currentFile = action.payload
         },
         changeCurrentFileContent : (state,action) => {
             state.currentFile.content = action.payload.content
