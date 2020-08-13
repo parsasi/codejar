@@ -1,4 +1,3 @@
-import React from 'react'
 import hashFileContent from '../helpers/hashFileContent'
 import {useDispatch , useSelector} from 'react-redux'
 import postContent from '../thunks/postFileContent'

@@ -1,13 +1,13 @@
 import React , {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {changeCurrentFile} from '../reducers/FileReducer'
-import fetchFileContent from '../thunks/fetchContentThunk'
 import MenuItem from './MenuItem'
 import { faCss3 , faHtml5 , faJs , faJava , faPython , faMarkdown } from '@fortawesome/free-brands-svg-icons'
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
-
+import useFetchFileContent from '../hooks/useFetchFileContent'
 
 export default function MenuItemLogic(props){
+    const fetchFileContent = useFetchFileContent()
     const dispatch = useDispatch()
     const current = props.current ? "current" : ""
     const save = props.saved ? "save": "css"
@@ -20,7 +20,7 @@ export default function MenuItemLogic(props){
     }
 
     useEffect(() => {
-        dispatch(fetchFileContent(props.file.id))
+        fetchFileContent(props.file.id)
     } , [])
 
 

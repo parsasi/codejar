@@ -20,7 +20,7 @@ module.exports = (db) => {
       }));
     app.use(bodyParser.json()); 
     
-    // app.use(express.static('public/build'))
+    app.use(express.static('public/build'))
 
     app.use('/ws' , workspacesRoute)
 

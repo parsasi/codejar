@@ -5,6 +5,7 @@ module.exports = (db) => {
     //Creating a new workspace with new unique public and admin code
     //The codes are given as the response upon the creation of the record in the db
     router.get('/create' , (req,res) => {
+        console.log('here')
         const createWorkspace = require('../controllers/createWorkspace')(db)
         createWorkspace()
         .then(results => {
