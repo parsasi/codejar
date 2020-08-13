@@ -1,15 +1,14 @@
 import React , {useEffect} from 'react'
-import fetchFiles from '../thunks/fetchFilesThunk'
-import { useSelector , useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 import Menu from './Menu'
+import useFetchFiles from '../hooks/useFetchFiles'
 export default function MenuLogic(){
     const allFiles = useSelector(state => state.files.allFiles)
     const filesLoadingStatus  = useSelector(state => state.files.loadingFilesStatus)
     const loading = filesLoadingStatus === 'pending'
-    const wsId = useSelector(state => state.workspace.workspaceId)
-    const dispatch = useDispatch()
+    const fetchFiles = useFetchFiles()
     
-    useEffect(_ => dispatch(fetchFiles(wsId)) , [])
+    useEffect(_ => fetchFiles() , [])
     return (
         <Menu allFiles={allFiles} loading={loading}/>
     )
