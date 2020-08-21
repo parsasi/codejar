@@ -20,8 +20,10 @@ export default function MenuItemLogic(props){
     }
 
     useEffect(() => {
-        fetchFileContent(props.file.id)
-    } , [props.file.id])
+        if(!props.file.justCreated){
+            fetchFileContent(props.file.id)
+        }
+    } , [props.file.id , props.file.justCreated])
 
 
     return (<MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)

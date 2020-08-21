@@ -125,6 +125,7 @@ export const filesSlice = createSlice({
                     item.syncing = false
                     item.lastUpdated = now
                     item.error = false
+                    item.justCreated = false
                 }
             }) 
         },

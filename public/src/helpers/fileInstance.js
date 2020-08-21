@@ -10,5 +10,6 @@ export default {
         saved : false,
         syncing: false,
         error : false,
-        savedHash : ''
+        savedHash : '',
+        justCreated : false
 }
