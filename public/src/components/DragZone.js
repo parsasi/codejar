@@ -4,7 +4,7 @@ import { faSync , faExclamationTriangle } from '@fortawesome/free-solid-svg-icon
 export default function DragZone(props){
 
     return (
-    <div className={`DragZone ${props.isDraggedClass}`} {...props}>
+    <div className={`DragZone ${props.isdraggedclass} `} {...props}>
         {props.children}
         {props.status === 'pending' ? <Fa icon={faSync} spin={true}/> : props.status === 'error' ? <Fa icon={faExclamationTriangle} /> : null }
     </div>

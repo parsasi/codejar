@@ -6,7 +6,7 @@ export default ({name , extention , id , content , }) => {
         name = nameAndExtention.name
         extention = nameAndExtention.extention
     }
-    const now = new Date()
+    const now = new Date().toString()
     const lang = getFileLang(name , extention)
     const newFile = {
         id : id,

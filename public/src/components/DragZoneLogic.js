@@ -54,7 +54,7 @@ export default function DragZoneContainer(prpos){
         onDragEnter={dragEnter}
         onDragLeave={dragLeave}
         onDrop={fileDrop}
-        isDraggedClass={isDraggedClass}
+        isdraggedclass={isDraggedClass} //Lowercasing the prop will tell react to ingore it when passed empty
         status={fileStatus}
         >
             {prpos.children}
