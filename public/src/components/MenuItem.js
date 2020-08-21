@@ -13,7 +13,7 @@ export default function MenuItem(props){
                 </div>
                 <div className="MenuItemIconPane">
                     {props.syncing && <Fa icon={faSync} spin={true} />}
-                    {props.error && <Fa icon={faExclamationTriangle}/>}
+                    {(props.error && !props.syncing) && <Fa icon={faExclamationTriangle}/>}
                 </div>
             </div>
         </a>

@@ -15,7 +15,7 @@ export default function Menu(props){
                 {
                     props.loading && (<MenuLoading />)
                 }
-                {props.allFiles.map(item => (<MenuItemLogic key={item.id} current={item.current} saved={item.saved} file={{extention : item.extention , name:item.name , id : item.id , syncing : item.syncing , id : item.id , error : item.error}}/>))}
+                {props.allFiles.map(item => (<MenuItemLogic key={item.id} file={item}/>))}
                 <AddFileButtonLogic />
             </div>
         </div>

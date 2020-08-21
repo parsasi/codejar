@@ -1,5 +1,6 @@
 import getExtention from './getExtention'
 import getFileLang from './getFilelang'
+import fileInstance from './fileInstance'
 export default ({name , extention , id , content , }) => {
     if(!extention){
         const nameAndExtention = getExtention(name)
@@ -9,6 +10,7 @@ export default ({name , extention , id , content , }) => {
     const now = new Date().toString()
     const lang = getFileLang(name , extention)
     const newFile = {
+        ...fileInstance,
         id : id,
         name : name,
         extention : extention,
@@ -20,7 +22,7 @@ export default ({name , extention , id , content , }) => {
         saved : false,
         syncing : false,
         error : false,
-        savedHash : ''
+        savedHash : '',
     }
     return newFile
 }
