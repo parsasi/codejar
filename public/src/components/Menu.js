@@ -16,7 +16,7 @@ export default function Menu(props){
                     props.loading && (<MenuLoading />)
                 }
                 {props.allFiles.map(item => (<MenuItemLogic key={item.id} file={item}/>))}
-                <AddFileButtonLogic />
+                {props.isAdmin ? <AddFileButtonLogic /> : null}
             </div>
         </div>
     )

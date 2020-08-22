@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/RightSideBar.css'
 import RightSideBarDownload from './RightSideBarDownload'
-import RightSideBarUpload from './RightSideBarUpload'
+import RightSideBarUploadLogic from './RightSideBarUploadLogic'
 export default function RightSideBar(props){
     return (
         <div className="RightSideBarContainer">
@@ -9,7 +9,7 @@ export default function RightSideBar(props){
                 <RightSideBarDownload />
             </div>
             <div className="RightSideBarSub RightSideBarBottom">
-                <RightSideBarUpload />
+                <RightSideBarUploadLogic />
             </div>
         </div>
     )
