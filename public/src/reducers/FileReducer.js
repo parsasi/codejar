@@ -5,20 +5,22 @@ import fetchContent from '../thunks/fetchContentThunk'
 import postContent from '../thunks/postFileContent'
 import postFile from '../thunks/postFileCreate'
 import createFileObj from '../helpers/createFileObj'
-const fileInstance = {
-    id: '',
-    name : '',
-    extention : '',
-    lang : '',
-    timeCreated : '',
-    content : '',
-    lastUpdated : '',
-    current:false,
-    saved : false,
-    syncing: false,
-    error : false,
-    savedHash : ''
-}
+import fileInstance from '../helpers/fileInstance'
+// const fileInstance = {
+//     id: '',
+//     name : '',
+//     extention : '',
+//     lang : '',
+//     timeCreated : '',
+//     content : '',
+//     lastUpdated : '',
+//     current:false,
+//     saved : false,
+//     syncing: false,
+//     error : false,
+//     savedHash : ''
+// }
+
 export const filesSlice = createSlice({
   name: 'files',
   initialState: {
@@ -123,6 +125,7 @@ export const filesSlice = createSlice({
                     item.syncing = false
                     item.lastUpdated = now
                     item.error = false
+                    item.justCreated = false
                 }
             }) 
         },

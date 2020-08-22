@@ -19,7 +19,7 @@ export default function AddFileModalContentLogic(props){
     function addToFiles(text){
         text = sanitize(text)
         if(validateFileName(text)){
-            const newFileObj = createFileObj({name : text , id : nanoid()})
+            const newFileObj = createFileObj({name : text , id : nanoid() , justCreated : true})
             if(!isDuplicate(newFileObj.name , newFileObj.extention , allFileNames)){
                 setValidationError(false)
                 dispatch(addFile(newFileObj))

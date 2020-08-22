@@ -9,8 +9,8 @@ import useFetchFileContent from '../hooks/useFetchFileContent'
 export default function MenuItemLogic(props){
     const fetchFileContent = useFetchFileContent()
     const dispatch = useDispatch()
-    const current = props.current ? "current" : ""
-    const save = props.saved ? "save": "css"
+    const current = props.file.current ? "current" : ""
+    const save = props.file.saved ? "save": "css"
     const extention = props.file.extention
     const icon = figureOutTheIcon(extention)
 
@@ -20,8 +20,10 @@ export default function MenuItemLogic(props){
     }
 
     useEffect(() => {
-        fetchFileContent(props.file.id)
-    } , [])
+        if(!props.file.justCreated){
+            fetchFileContent(props.file.id)
+        }
+    } , [props.file.id , props.file.justCreated])
 
 
     return (<MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)
