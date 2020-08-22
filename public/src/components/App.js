@@ -15,8 +15,8 @@ export default function App(props){
             <Router>
                     <div className="App">
                         <Switch>
-                            <Route path="/ws/:ws_id" component={WorkspaceContainer} />
-                            <Route path="/" component={LandingPageContainerLoigc} />
+                            <Route path="/ws/:ws_id" exact component={WorkspaceContainer} />
+                            <Route path="/" exact component={LandingPageContainerLoigc} />
                         </Switch>
                     </div>
             </Router>
