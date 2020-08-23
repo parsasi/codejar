@@ -9,7 +9,7 @@ const serverStartHandler = (err) => {
     !!err ? console.log(`ERROR : ${err}`) : console.log(`server is running on port ${PORT}`)
 }
 
-io = require('./src/socket/io')(io)
+io = require('./src/socket/io')(io , db)
 
 http.listen(PORT , serverStartHandler)
 

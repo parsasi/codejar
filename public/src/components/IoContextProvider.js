@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect  , useState} from 'react'
 import * as io from 'socket.io-client'
 import IoContext from '../contexts/IoContext'
-
+import getServerRoute from '../helpers/getServerRoute'
+import {useSelector} from 'react-redux'
 export default function IoContextProvider(props){
-    const socket = io('http://localhost:8080')
+    const serverRoute = getServerRoute()
+    const workspaceId = useSelector(state => state.workspace.workspaceId)
+    const [socket , setSocket] = useState({})
+    useEffect(() => {
+        const socket = new io.Manager(serverRoute , {query: {
+            workspaceId
+        }})
+        setSocket(socket)
+    } , [])
 
     return (
         <IoContext.Provider value={socket}>
