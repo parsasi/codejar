@@ -8,7 +8,7 @@ export default function IoContextProvider(props){
     const workspaceId = useSelector(state => state.workspace.workspaceId)
     const [socket , setSocket] = useState({})
     useEffect(() => {
-        const socket = new io.Manager(serverRoute , {query: {
+        const socket = new io(serverRoute , {query: {
             workspaceId
         }})
         setSocket(socket)

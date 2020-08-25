@@ -90,7 +90,7 @@ export const filesSlice = createSlice({
             })
         },
         [postContent.fulfilled] : (state , action) => {
-            const now = new Date()
+            const now = new Date().toString()
             const hashed = hashFileContent(action.meta.arg.content)
             state.allFiles.map(item => {
                 if(item.id === action.meta.arg.nanoId){
