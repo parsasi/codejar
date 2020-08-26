@@ -12,7 +12,6 @@ module.exports = (io , db) => {
         
         socket.on('FILE_CHANGED' , (data) => {
             io.in(data.workspace).emit('FILE_CHANGES' , data) 
-            console.log(data) 
         })
         
     });
