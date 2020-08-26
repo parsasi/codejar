@@ -44,7 +44,11 @@ export const filesSlice = createSlice({
                 item.current = item.id === action.payload.id ? true : false
             })
             state.currentFile = state.allFiles.find(item => item.id === action.payload.id)
-        }
+        },
+        changeFileContent : (state , action) => {
+            state.currentFile.content = state.currentFile.id === action.payload.id ? action.payload.content :  state.currentFile.content
+            state.allFiles.map(item => item.id === action.payload.id ? item.content = action.payload.content : null)
+    }
     },
     extraReducers : {
         [fetchFiles.pending] : (state , action) => {
@@ -140,6 +144,6 @@ export const filesSlice = createSlice({
     }
 })
 
-export const { addFile , changeCurrentFileContent , changeCurrentFile } = filesSlice.actions
+export const { addFile , changeCurrentFileContent , changeCurrentFile , changeFileContent } = filesSlice.actions
 
 export default filesSlice.reducer
