@@ -1,9 +1,7 @@
 import React , {useContext} from 'react'
 import IoContext from '../contexts/IoContext'
-import useIsAdmin from '../hooks/useIsAdmin'
 import { useSelector } from 'react-redux'
 export default function useSocketIo(){
-    const isAdmin = useIsAdmin()
     const socket = useContext(IoContext)
     const workspace = useSelector(state => state.workspace.workspaceId)
     const emit = (eventName , payload) => {

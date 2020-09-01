@@ -31,9 +31,12 @@ export const filesSlice = createSlice({
     },
     reducers:{
         addFile: (state, action) => {
-            state.allFiles.map(item => item.current = false)
-            state.allFiles.unshift(action.payload)
-            // state.currentFile = action.payload
+            const fileWithTheSameId = state.allFiles.filter(item => item.id === action.payload.id)[0]
+            if(!fileWithTheSameId){
+                state.allFiles.map(item => item.current = false)
+                state.allFiles.unshift(action.payload)
+                // state.currentFile = action.payload
+            }
         },
         changeCurrentFileContent : (state,action) => {
             state.currentFile.content = action.payload.content

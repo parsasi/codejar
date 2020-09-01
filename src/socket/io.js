@@ -11,9 +11,16 @@ module.exports = (io , db) => {
         .catch(console.log) 
         
         socket.on('FILE_CHANGED' , (data) => {
-            io.in(data.workspace).emit('FILE_CHANGES' , data) 
+            const workspace = data.workspace
+            delete data.workspace
+            io.in(workspace).emit('FILE_CHANGES' , data) 
         })
         
+        socket.on('FILE_CREATED' , (data) => {
+            const workspace = data.workspace
+            delete data.workspace
+            io.in(workspace).emit('FILE_CREATED' , data)
+        })
     });
 
     
