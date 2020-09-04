@@ -8,6 +8,7 @@ import ShareModalContentLogic from './ShareModalContentLogic'
 import ShareModalContextProvider from './ShareModalContextProvider'
 import AddFileModalContextProvider from './AddFileModalContextProvider'
 import AddFileModalContentLogic from './AddFileModalContentLogic'
+import IoContextProvider from './IoContextProvider'
 
 export default function EditorContainer(props){
     return (
@@ -15,11 +16,13 @@ export default function EditorContainer(props){
              <StatusContextProvider>
                 <ShareModalContextProvider>
                     <AddFileModalContextProvider>
-                            <WindowBar/>
-                            <MiddleRow />
-                            <StatusBarLogic />
-                            <AddFileModalContentLogic/>
-                            <ShareModalContentLogic/>
+                            <IoContextProvider>
+                                <WindowBar/>
+                                <MiddleRow />
+                                <StatusBarLogic />
+                                <AddFileModalContentLogic/>
+                                <ShareModalContentLogic/>
+                            </IoContextProvider>
                     </AddFileModalContextProvider>
                 </ShareModalContextProvider>
             </StatusContextProvider>
