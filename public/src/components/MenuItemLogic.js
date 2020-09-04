@@ -5,6 +5,9 @@ import MenuItem from './MenuItem'
 import { faCss3 , faHtml5 , faJs , faJava , faPython , faMarkdown } from '@fortawesome/free-brands-svg-icons'
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
 import useFetchFileContent from '../hooks/useFetchFileContent'
+import MenuItemContextMenu from './MenuItemContextMenu'
+import { MenuProvider } from 'react-contexify';
+
 
 export default function MenuItemLogic(props){
     const fetchFileContent = useFetchFileContent()
@@ -26,7 +29,14 @@ export default function MenuItemLogic(props){
     } , [props.file.id , props.file.justCreated])
 
 
-    return (<MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} />)
+    return (
+        <>
+            <MenuProvider id={props.file.id}>
+                <><MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} /></>
+            </MenuProvider>
+            <MenuItemContextMenu id={props.file.id} renameHandler={e => console.log('Rename clicked'  , e)} deleteHandler={e=>console.log('Delete clicked:' ,e )}/>
+        </>
+        )
 }
 
 function figureOutTheIcon(extention){
