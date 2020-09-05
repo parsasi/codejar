@@ -8,7 +8,7 @@ import useFetchFileContent from '../hooks/useFetchFileContent'
 import MenuItemContextMenu from './MenuItemContextMenu'
 import { MenuProvider } from 'react-contexify'
 import DeleteFileModalContext from '../contexts/DeleteFileModalContext'
-
+import RenameFileModalContext from '../contexts/RenameFileModalContext'
 
 export default function MenuItemLogic(props){
     const fetchFileContent = useFetchFileContent()
@@ -18,7 +18,7 @@ export default function MenuItemLogic(props){
     const extention = props.file.extention
     const icon = figureOutTheIcon(extention)
     const [ , setDeleteIsOpen] = useContext(DeleteFileModalContext)
-
+    const [ , setRenameIsOpen] = useContext(RenameFileModalContext)
 
     const menuItemClickHandler = (e) => {
         const id = e.currentTarget.getAttribute('_id')
@@ -27,6 +27,10 @@ export default function MenuItemLogic(props){
 
     const deleteClickHandler = (id) => {
         setDeleteIsOpen(id)
+    }
+    
+    const renameClickHandler = (id) => {
+        setRenameIsOpen(id)
     }
 
     useEffect(() => {
@@ -41,7 +45,7 @@ export default function MenuItemLogic(props){
             <MenuProvider id={props.file.id}>
                 <><MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} /></>
             </MenuProvider>
-            <MenuItemContextMenu id={props.file.id} renameHandler={e => console.log('Rename clicked'  , e)} deleteHandler={id => deleteClickHandler(id)}/>
+            <MenuItemContextMenu id={props.file.id} renameHandler={id => renameClickHandler(id)} deleteHandler={id => deleteClickHandler(id)}/>
         </>
         )
 }
