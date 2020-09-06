@@ -132,7 +132,6 @@ module.exports = (db) => {
 
     // router.delet
     router.delete('/file' , (req , res) => {
-        console.log('here')
         const {nanoid : nanoId , workspaceid : workspaceId} = req.query
         if(!(nanoId && workspaceId)){
             res.statusCode = 400
@@ -144,9 +143,26 @@ module.exports = (db) => {
         deleteFile(nanoId , workspaceId)
         .then(_ => res.json())
         .catch(e => {
-            console.log(e)
             res.statusCode = 500
             res.json({message : 'Something went wrong'})
+        })
+    })
+
+    router.post('/file/rename' , (req , res) => {
+        const {nanoid : nanoId , name , extention , workspaceid : workspaceId} = req.body
+        if(!(nanoId && name  && extention && workspaceId)){
+            res.statusCode = 400
+            res.json({message : "Somthing went wrong"})
+            return
+        }
+        const renameFile = require('../controllers/renameFile')(db)
+
+        renameFile(nanoId , name , extention , workspaceId)
+        .then(_ => res.json())
+        .catch(e => {
+            console.log(e)
+            res.statusCode = 500
+            res.json({message : "something went wrong"})
         })
     })
     return router

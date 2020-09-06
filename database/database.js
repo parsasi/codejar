@@ -58,9 +58,14 @@ module.exports = {
             (? , ? , ? , ? , ?);
             ` , [fileName , extention , nanoId , workspaceId , content])
     },
-    deleteFile : (id) => {
+    deleteFile : (nanoId) => {
         return db.query(`
             DELETE FROM files WHERE nano_id = ?`
-            ,[id])
+            ,[nanoId])
+    },
+    renameFile : (fileName , extention , nanoId) => {
+        return db.query(`
+            UPDATE files SET name = ? , extention = ? WHERE nano_id = ?;
+        `,[fileName , extention , nanoId])
     }
 }
