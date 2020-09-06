@@ -1,11 +1,11 @@
 import React , {useContext} from 'react'
 import DeleteFileModalContext from '../contexts/DeleteFileModalContext'
 import Modal from './Modal'
-import {deleteFile} from '../reducers/FileReducer'
-import {useDispatch , useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import DeleteFileModalContent from './DeleteFileModalContent'
+import useDeleteFile from '../hooks/useDeleteFile'
 export default function DeleteFileModalContentLogic(props){
-    const dispatch = useDispatch()
+    const deleteFile = useDeleteFile()
     //If any file is to be deleted, the value of isOpen will be the id of the file. Otherwise, it will be a falsy value.
     const [isOpen , setIsOpen] = useContext(DeleteFileModalContext)
     const isOpenBool = !!isOpen
@@ -13,7 +13,7 @@ export default function DeleteFileModalContentLogic(props){
     const fileName = file ? `${file.name}.${file.extention}` : null;
 
     const deleteClickHandler = (id) => {
-        dispatch(deleteFile({id}))
+        deleteFile(id)
         setIsOpen(false)
     }
 

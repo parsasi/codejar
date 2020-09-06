@@ -57,5 +57,10 @@ module.exports = {
             VALUES 
             (? , ? , ? , ? , ?);
             ` , [fileName , extention , nanoId , workspaceId , content])
+    },
+    deleteFile : (id) => {
+        return db.query(`
+            DELETE FROM files WHERE nano_id = ?`
+            ,[id])
     }
 }

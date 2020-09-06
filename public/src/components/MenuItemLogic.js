@@ -9,6 +9,7 @@ import MenuItemContextMenu from './MenuItemContextMenu'
 import { MenuProvider } from 'react-contexify'
 import DeleteFileModalContext from '../contexts/DeleteFileModalContext'
 import RenameFileModalContext from '../contexts/RenameFileModalContext'
+import useIsAdmin from '../hooks/useIsAdmin'
 
 export default function MenuItemLogic(props){
     const fetchFileContent = useFetchFileContent()
@@ -19,6 +20,7 @@ export default function MenuItemLogic(props){
     const icon = figureOutTheIcon(extention)
     const [ , setDeleteIsOpen] = useContext(DeleteFileModalContext)
     const [ , setRenameIsOpen] = useContext(RenameFileModalContext)
+    const isAdmin = useIsAdmin()
 
     const menuItemClickHandler = (e) => {
         const id = e.currentTarget.getAttribute('_id')
@@ -45,7 +47,7 @@ export default function MenuItemLogic(props){
             <MenuProvider id={props.file.id}>
                 <><MenuItem file={props.file} error={props.file.error} syncing={props.file.syncing} current={current} save={save} extention={extention} icon={icon} menuItemClickHandler={menuItemClickHandler} /></>
             </MenuProvider>
-            <MenuItemContextMenu id={props.file.id} renameHandler={id => renameClickHandler(id)} deleteHandler={id => deleteClickHandler(id)}/>
+            <MenuItemContextMenu isAdmin={isAdmin} id={props.file.id} renameHandler={id => renameClickHandler(id)} deleteHandler={id => deleteClickHandler(id)}/>
         </>
         )
 }

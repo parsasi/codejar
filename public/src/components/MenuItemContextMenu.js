@@ -7,11 +7,11 @@ import Fa from './Fa'
 export default function MenuItemContextMenu(props){
     return (
         <Menu id={props.id} theme={theme.dark} animation={animation.fade}>
-            <Item id={props.id} onClick={_=> props.renameHandler(props.id)}>
+            <Item disabled={!props.isAdmin} id={props.id} onClick={_=> props.renameHandler(props.id)}>
                 <Fa icon={faItalic}/>&nbsp;
                 Rename
             </Item>
-            <Item id={props.id} onClick={_ => props.deleteHandler(props.id)}>
+            <Item disabled={!props.isAdmin} id={props.id} onClick={_ => props.deleteHandler(props.id)}>
                 <Fa icon={faTrashAlt}/>&nbsp;
                 Delete
             </Item>

@@ -4,6 +4,7 @@ import fetchFiles from '../thunks/fetchFilesThunk'
 import fetchContent from '../thunks/fetchContentThunk'
 import postContent from '../thunks/postFileContent'
 import postFile from '../thunks/postFileCreate'
+import postFileDelete from '../thunks/postFileContent'
 import createFileObj from '../helpers/createFileObj'
 import fileInstance from '../helpers/fileInstance'
 // const fileInstance = {

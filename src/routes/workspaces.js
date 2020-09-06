@@ -124,7 +124,27 @@ module.exports = (db) => {
         createFile(name , extention , nanoId , workspaceId , content)
         .then(_ => res.json())
         .catch(e => {
-            console.log('error: ' , e)
+            res.statusCode = 500
+            res.json({message : 'Something went wrong'})
+        })
+    })
+
+
+    // router.delet
+    router.delete('/file' , (req , res) => {
+        console.log('here')
+        const {nanoid : nanoId , workspaceid : workspaceId} = req.query
+        if(!(nanoId && workspaceId)){
+            res.statusCode = 400
+            res.json({message : 'Somthing went wrong.'})
+            return
+        }
+
+        const deleteFile = require('../controllers/deleteFile')(db)
+        deleteFile(nanoId , workspaceId)
+        .then(_ => res.json())
+        .catch(e => {
+            console.log(e)
             res.statusCode = 500
             res.json({message : 'Something went wrong'})
         })
