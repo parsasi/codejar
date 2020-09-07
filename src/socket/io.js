@@ -21,6 +21,18 @@ module.exports = (io , db) => {
             delete data.workspace
             io.in(workspace).emit('FILE_CREATED' , data)
         })
+
+        socket.on('FILE_RENAMED' , (data) => {
+            const workspace = data.workspace
+            delete data.workspace
+            io.in(workspace).emit('FILE_RENAMED' , data)
+        })
+
+        socket.on('FILE_DELETED' , (data) => {
+            const workspace = data.workspace
+            delete data.workspace
+            io.in(workspace).emit('FILE_DELETED' , data)
+        })
     });
 
     
