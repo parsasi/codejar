@@ -10,12 +10,14 @@ import sanitize from '../helpers/sanitize'
 import createFileObj from '../helpers/createFileObj'
 import isDuplicate from '../helpers/isDuplicate'
 import postFile from '../thunks/postFileCreate' 
+import useSocketIo from '../hooks/useSocketIo'
 export default function AddFileModalContentLogic(props){
     const [isOpen , setIsOpen] = useContext(AddFileModalContext)
     const [validationError , setValidationError] = useState(false)
     const dispatch = useDispatch()
     const allFileNames = useSelector(state => state.files.allFiles).map(item => item.name + '.' + item.extention)
     const workspaceId = useSelector(state => state.workspace.workspaceId)
+    const [emit , ] = useSocketIo()
     function addToFiles(text){
         text = sanitize(text)
         if(validateFileName(text)){
@@ -25,6 +27,7 @@ export default function AddFileModalContentLogic(props){
                 dispatch(addFile(newFileObj))
                 dispatch(changeCurrentFile({id : newFileObj.id}))
                 dispatch(postFile({name : newFileObj.name , extention :  newFileObj.extention , nanoId :  newFileObj.id , workspaceId  , content : ''} ))
+                emit('FILE_CREATED' , newFileObj)
                 setIsOpen(_ => false)
             }else{
                 setValidationError(true)

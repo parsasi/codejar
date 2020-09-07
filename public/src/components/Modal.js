@@ -1,5 +1,5 @@
-import React , {useState} from 'react'
-import ModalElement from 'react-modal'
+import React , {useEffect} from 'react'
+import ModalElement  from 'react-modal'
 import '../styles/Modal.css'
 import Fa from './Fa'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +15,10 @@ export default function Modal(props){
           padding: 0
         }
       };
+      
+
+      useEffect(_ =>  ModalElement.setAppElement('body') , [])
+
     return (
         <ModalElement
           isOpen={props.open}
