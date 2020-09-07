@@ -4,6 +4,8 @@ import fetchFiles from '../thunks/fetchFilesThunk'
 import fetchContent from '../thunks/fetchContentThunk'
 import postContent from '../thunks/postFileContent'
 import postFile from '../thunks/postFileCreate'
+import postFileDelete from '../thunks/postFileContent'
+import postFileRename from '../thunks/postFileRename'
 import createFileObj from '../helpers/createFileObj'
 import fileInstance from '../helpers/fileInstance'
 // const fileInstance = {
@@ -51,7 +53,18 @@ export const filesSlice = createSlice({
         changeFileContent : (state , action) => {
             state.currentFile.content = state.currentFile.id === action.payload.id ? action.payload.content :  state.currentFile.content
             state.allFiles.map(item => item.id === action.payload.id ? item.content = action.payload.content : null)
-    }
+        },
+        deleteFile: (state , action) => {
+            state.allFiles = state.allFiles.filter(item => item.id !== action.payload.id)
+        },
+        renameFile : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.payload.id){
+                    item.name = action.payload.name
+                    item.extention = action.payload.extention
+                }
+            })
+        }
     },
     extraReducers : {
         [fetchFiles.pending] : (state , action) => {
@@ -144,9 +157,31 @@ export const filesSlice = createSlice({
                 }
             }) 
         },
+        [postFileRename.pending] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = true
+                }
+            })
+        },
+        [postFileRename.fulfilled] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                }
+            })
+        },
+        [postFileRename.rejected] : (state , action) => {
+            state.allFiles.map(item => {
+                if(item.id === action.meta.arg.nanoId){
+                    item.syncing = false
+                    item.error = true
+                }
+            }) 
+        }
     }
 })
 
-export const { addFile , changeCurrentFileContent , changeCurrentFile , changeFileContent } = filesSlice.actions
+export const { addFile , changeCurrentFileContent , changeCurrentFile , changeFileContent , deleteFile , renameFile } = filesSlice.actions
 
 export default filesSlice.reducer

@@ -1,0 +1,13 @@
+.DeleteFileModalContainer{
+    width:90%;
+    margin:30px 5%;
+    display: flex;
+    justify-content: space-around;
+}
+.DeleteFileModalButton{
+    width:40%;
+    min-height:50px;
+    border:none;
+    font-size:1.2rem;
+    cursor:pointer;
+}
