@@ -1,17 +1,19 @@
 .menu {
 	width: 100%;
-	height: calc( 100% - 32px );
-	height: -webkit-calc( 100% - 32px );
+	/* height: calc( 100% - 32px ); */
+	/* height: -webkit-calc( 100% - 32px ); */
 	padding-top: 2px;
 	background: #32353D;
 	/* box-shadow: inset 0 2px 0 rgba(255,255,255,.05), inset 0 1px 0 rgba(0,0,0,.4); */
 	transition: all .2s ease;
 	-webkit-transition: all .2s ease;
+
 }
 .MenuFilesContainer{
 	/* margin-top:5px; */
 	/* box-shadow: inset 0 -2px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(0,0,0,.4); Bottom Shadow */
-	padding-bottom:5px;
+	/* padding-bottom:5px; */
+	overflow: hidden;
 }
 .menu span {
 	display: block;
@@ -100,4 +102,26 @@
 	color:#f3f3f4;
 	opacity: 0.6;
 	text-align: center;
+}
+
+/*Scroll styles*/
+.MenuItems{
+	overflow-y: scroll;
+	max-height: 70%;
+}
+.MenuItems::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.MenuItems::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.MenuItems::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
 }

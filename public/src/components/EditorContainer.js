@@ -2,8 +2,8 @@ import React from 'react'
 import WindowBar from './WindowBar'
 import MiddleRow from './MiddleRow'
 import '../styles/generics.css'
-import StatusBarLogic from './StatusbarLogic'
 import ShareModalContentLogic from './ShareModalContentLogic'
+import BottomRow from './BottomRow'
 import AddFileModalContentLogic from './AddFileModalContentLogic'
 import DeleteFileModalContentLogic from './DeleteFileModalContentLogic'
 import RenameFileModalContentLogic from './RenameFileModalContentLogic'
@@ -14,7 +14,7 @@ export default function EditorContainer(props){
              <GlobalContextProviders>
                 <WindowBar/>
                 <MiddleRow />
-                <StatusBarLogic />
+                <BottomRow />
                 <AddFileModalContentLogic/>
                 <ShareModalContentLogic/>
                 <DeleteFileModalContentLogic />
