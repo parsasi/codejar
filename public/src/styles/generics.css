@@ -1,9 +1,11 @@
 
+@import "https://fonts.googleapis.com/css2?family=Raleway&display=swap";
+
 body {
 	margin: 0;
 	padding: 0;
 	background: #32353D;
-	font-family: 'Varela Round', 'Ionicons', sans-serif;
+	font-family: 'Raleway', 'Ionicons', sans-serif;
 	user-select: none;
 	-webkit-user-select: none;
 }

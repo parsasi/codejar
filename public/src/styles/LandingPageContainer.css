@@ -1,10 +1,8 @@
-.LandingPageLogoContainer{
+/* .LandingPageLogoContainer{
     text-align: center;
     margin-top:100px;
 }   
-.LandingPageLogo{
-    width:400px;
-}
+
 .LandingPageButtonsContainer{
     text-align: center;
     display: flex;
@@ -26,4 +24,226 @@
 }
 .LandingPageButton:hover{
     background: #000000;
+} */
+@import "https://fonts.googleapis.com/css2?family=Raleway&display=swap";
+header,
+section.sponsors,
+section.sponsors .list,
+section.sponsors .list .imgsponsor,
+.winfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LandingPageLogo{
+    max-width:250px;
+}
+.LandingPageLogoText{
+    max-width: 250px;
+}
+.LandingPageCreateButton{
+    border: 2px solid #ffffff;
+    color:#ffffff;
+    border-radius: 30px;
+    opacity: 0.8;
+    cursor: pointer;
+    padding: 10px 30px;
+    transition: opacity 300ms;
+    background:none;
+    font-size:1.5rem;
+}
+.LandingPageCreateButton:focus{
+    outline:none;
+}
+.LandingPageCreateButton:hover{
+    opacity: 1;
+}
+.content {
+  max-width: 1024px;
+  position: relative;
+  margin: 0px auto;
+}
+.content .grid:nth-child(even) {
+  flex-direction: row-reverse;
+}
+.content .grid {
+  padding: 30px 0px;
+  min-height: 400px;
+}
+.content .grid.allcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  background: #22252B;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+section {
+  padding: 10px 20px;
+}
+section.one {
+  background: url("../assets/landing_header.jpg")
+    no-repeat center;
+  background-size: cover;
+  min-height: 300px;
+  padding-top:50px;
+}
+header {
+  color: white;
+  max-width: 1100px;
+  height: 40px;
+  justify-content: space-between;
+  margin: 0px auto;
+}
+header ul {
+  margin-top: 0;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header li {
+  margin: 0px 6px;
+  list-style: none;
+}
+header li.logo {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-right: 14px;
+}
+.btn {
+  border: 2px solid;
+  border-radius: 20px;
+  opacity: 0.8;
+  cursor: pointer;
+  padding: 5px 17px 5px;
+  transition: opacity 300ms;
+}
+.btn:hover {
+  opacity: 1;
+}
+.bighero {
+  max-width: 560px;
+  margin: 90px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.bighero h1 {
+  color: #ffc107;
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  animation: bounceIn 1s cubic-bezier(0.155, 1.105, 0.295, 1.12) 1s;
+}
+.bighero p {
+  color: white;
+  text-align: center;
+  line-height: 1.4;
+  width: 90%;
+}
+section.sponsors {
+  background-color: #32353D;
+}
+section.sponsors .list {
+  flex-direction: row;
+  min-width: 844px;
+  justify-content: space-around;
+}
+.imgsponsor {
+  width: auto;
+  height: 50px;
+  overflow: hidden;
+}
+section.sponsors .list img {
+  height: 100%;
+}
+
+section.infos {
+  padding: 50px 20px;
+}
+.float-md-50 {
+  width: 48%;
+  float: left;
+}
+.winfo {
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+h1.title {
+  font-size: 2.4em;
+  color:#ffffff;
+}
+p.description {
+  margin: 20px 0px;
+  line-height: 1.5;
+  font-size: 1em;
+  color: #6d6d6d;
+}
+@keyframes bounceIn {
+  0%,
+  100% {
+    transform: translate3d(0, 0px, 0) scale3d(1, 1, 1);
+  }
+  50%,
+  52% {
+    transform: translate3d(0, 0px, 0) scale3d(1.2, 1.2, 1);
+  }
+}
+@media (max-width: 600px) {
+  .content .grid:nth-child(even) {
+    flex-direction: column-reverse;
+    background-color: #ddd;
+  }
+  .content .grid {
+    padding: 20px;
+    flex-direction: column-reverse;
+  }
+  .float-md-50 {
+    width: 99%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 881px) {
+  .bighero {
+    text-align: center;
+    width: auto;
+  }
+  .bighero h1 {
+    font-size: 3em;
+  }
+  .bighero p {
+    font-size: 2em;
+  }
+  section.sponsors .list {
+    flex-direction: row;
+    min-width: 444px;
+    justify-content: space-around;
+  }
+  section.sponsors .list .imgsponsor {
+    width: auto;
+    height: 30px;
+    overflow: hidden;
+  }
+  section.sponsors .list img {
+    height: 100%;
+    opacity: 0.3;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
