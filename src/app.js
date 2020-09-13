@@ -5,11 +5,15 @@ module.exports = (db) => {
     const bodyParser = require('body-parser')
     const path = require('path')
     const cors = require('cors')
+    const forceSSL = require('./middlewares/forceSSL')
     const corsOptions = {
         origin: 'http://localhost:3000',
         optionsSuccessStatus: 200
       }
     app.use(cors(corsOptions));
+
+    //Redirects all requests from http to https
+    app.use(forceSSL)
 
     // app.use(express.json());
     // app.use(express.urlencoded({ extended: false }));
@@ -19,6 +23,7 @@ module.exports = (db) => {
         extended: true
       }));
     app.use(bodyParser.json()); 
+
     
     app.use(express.static('public/build'))
 
