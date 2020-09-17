@@ -5,7 +5,6 @@ module.exports = (db) => {
     //Creating a new workspace with new unique public and admin code
     //The codes are given as the response upon the creation of the record in the db
     router.get('/create' , (req,res) => {
-        console.log('here')
         const createWorkspace = require('../controllers/createWorkspace')(db)
         createWorkspace()
         .then(results => {
@@ -130,7 +129,6 @@ module.exports = (db) => {
     })
 
 
-    // router.delet
     router.delete('/file' , (req , res) => {
         const {nanoid : nanoId , workspaceid : workspaceId} = req.query
         if(!(nanoId && workspaceId)){
