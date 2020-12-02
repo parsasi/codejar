@@ -16,7 +16,7 @@ export default function MenuItemContextMenu(props){
                 Delete
             </Item>
             <Separator />
-            <Item disabled>
+            <Item id={props.id} id={props.id} onClick={_ => props.downloadClickHandler(props.id)}>
                 <Fa icon={faCloudDownloadAlt} /> &nbsp;
                 Download
             </Item>
