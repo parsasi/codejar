@@ -8,7 +8,7 @@ module.exports = (db) => {
         const createWorkspace = require('../controllers/createWorkspace')(db)
         createWorkspace()
         .then(results => {
-            res.json(results)
+            res.json(results)   
         })
         .catch(e => {
             res.statusCode = 500

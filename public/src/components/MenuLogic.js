@@ -13,17 +13,16 @@ export default function MenuLogic(){
     const fetchFiles = useFetchFiles()
     const isAdmin = useIsAdmin()
     const [emit , on] = useSocketIo()
-    if(!isAdmin){
-        on('FILE_CREATED' , data => {
-            dispatch(addFile(data))
-        })
-        on('FILE_RENAMED' , data => {
-            dispatch(renameFile({id : data.id , name : data.name , extention : data.extention}))
-        })
-        on('FILE_DELETED' , data => {
-            dispatch(deleteFile({id : data.id }))
-        })
-    }
+
+    on('FILE_CREATED' , data => {
+        dispatch(addFile(data))
+    })
+    on('FILE_RENAMED' , data => {
+        dispatch(renameFile({id : data.id , name : data.name , extention : data.extention}))
+    })
+    on('FILE_DELETED' , data => {
+        dispatch(deleteFile({id : data.id }))
+    })
 
     useEffect(_ => fetchFiles() , [])
     return (

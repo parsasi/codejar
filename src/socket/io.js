@@ -13,28 +13,27 @@ module.exports = (io , db) => {
         socket.on('FILE_CHANGED' , (data) => {
             const workspace = data.workspace
             delete data.workspace
-            io.in(workspace).emit('FILE_CHANGES' , data) 
+            socket.to(workspace).emit('FILE_CHANGES' , data) 
         })
         
         socket.on('FILE_CREATED' , (data) => {
             const workspace = data.workspace
             delete data.workspace
-            io.in(workspace).emit('FILE_CREATED' , data)
+            socket.to(workspace).emit('FILE_CREATED' , data)
         })
 
         socket.on('FILE_RENAMED' , (data) => {
             const workspace = data.workspace
             delete data.workspace
-            io.in(workspace).emit('FILE_RENAMED' , data)
+            socket.to(workspace).emit('FILE_RENAMED' , data)
         })
 
         socket.on('FILE_DELETED' , (data) => {
             const workspace = data.workspace
             delete data.workspace
-            io.in(workspace).emit('FILE_DELETED' , data)
+            socket.to(workspace).emit('FILE_DELETED' , data)
         })
     });
-
-    
+   
     return io
 }
