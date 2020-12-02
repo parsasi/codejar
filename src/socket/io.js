@@ -1,6 +1,18 @@
 module.exports = (io , db) => {
     const getWorkspace = require('../controllers/getWorkspace')(db)
     require('dotenv').config()
+
+
+    function getRoomAllClients(room){
+        return new Promise((resovle,reject) => {
+            io.of('/').in(room).clients(function(err,clients){
+                if(err) reject(err)
+    
+                resovle(clients)
+            });
+        })
+    }
+
     io.on('connection', (socket) => {
         const workspaceId = socket.handshake.query.workspaceId
         getWorkspace(workspaceId)
@@ -10,9 +22,11 @@ module.exports = (io , db) => {
         })
         .catch(console.log) 
         
-        socket.on('FILE_CHANGED' , (data) => {
+        socket.on('FILE_CHANGED' , async (data) => {
             const workspace = data.workspace
             delete data.workspace
+            // const allClients = await getRoomAllClients(workspace)
+            // console.log(allClients.length) 
             socket.to(workspace).emit('FILE_CHANGES' , data) 
         })
         
@@ -37,3 +51,4 @@ module.exports = (io , db) => {
    
     return io
 }
+
