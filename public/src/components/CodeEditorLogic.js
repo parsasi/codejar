@@ -21,7 +21,7 @@ export default function CodeEditorLogic(props){
         }
     }
     // //Listening to fileChanges if this is not an admin enviroment
-    (!isAdmin) && on('FILE_CHANGES' , data => dispatch(changeFileContent({id : data.id , content : data.content})))
+    on('FILE_CHANGES' , data => dispatch(changeFileContent({id : data.id , content : data.content})))
 
     return (
         <CodeEditor currentFile={currentFile} onChange={onChange} />
